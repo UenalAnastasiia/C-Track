@@ -1,0 +1,59 @@
+mat-card {
+    position: relative;
+    height: 65vh;
+    width: 50vw;
+    margin-left: 20vw;
+    margin-top: 20vh;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 0;
+    background-color: #292e49;
+    // background: linear-gradient(to right, #536976, #292e49);
+}
+
+.btn-box {
+    position: absolute;
+    top: -36px;
+    right: 0;
+    width: 40%;
+    height: 36px;
+    background-color: #292e49;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    display: flex;
+
+    button {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ff7714;
+
+        &:first-child {
+            border-top-left-radius: 24px !important;
+            border-radius: 0;
+        }
+
+        &:last-child {
+            border-top-right-radius: 24px !important;
+            border-radius: 0;
+        }
+    }
+
+    mat-icon {
+        font-size: 20px;
+        height: 20px;
+        width: 28px;
+    }
+}
+
+.inactive-btn-chart {
+    background: linear-gradient(to right, #536976, #292e49);
+    color: white !important;
+}
+
+.inactive-btn-table {
+    background: linear-gradient(to left, #536976, #292e49);
+    color: white !important;
+}
