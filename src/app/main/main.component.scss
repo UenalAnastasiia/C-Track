@@ -1,0 +1,30 @@
+.logo-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 72px;
+    width: 240px;
+    background: linear-gradient(to right, #12032c, #9595959c, #12032c);
+}
+
+.logo {
+    position: absolute;
+    top: 12px;
+    right: 32px;
+    width: max-content;
+    
+    h1 {
+        margin-bottom: 0;
+        font-size: 32px;
+        color: #FF8C00;
+        filter: drop-shadow(2px 0px 1px #ffffff);
+    }
+
+    h2 {
+        margin-left: 36px;
+        margin-top: -8px;
+        color: #FF8C00;
+        font-size: 12px;
+        filter: drop-shadow(1px 0px 0px #ffffff);
+    }
+}

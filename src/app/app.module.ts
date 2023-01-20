@@ -8,11 +8,13 @@ import { TrackingTabComponent } from './tracking-tab/tracking-tab.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TrackingTabComponent
+    TrackingTabComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
