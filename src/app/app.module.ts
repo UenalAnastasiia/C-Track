@@ -9,12 +9,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MainComponent } from './main/main.component';
+import { CoinsReviewComponent } from './coins-review/coins-review.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TrackingTabComponent,
-    MainComponent
+    MainComponent,
+    CoinsReviewComponent
   ],
   imports: [
     BrowserModule,

@@ -2,13 +2,14 @@ mat-card {
     position: relative;
     height: 65vh;
     width: 50vw;
-    margin-left: 20vw;
+    margin-left: 30vw;
     margin-top: 20vh;
     border-bottom-left-radius: 24px;
     border-bottom-right-radius: 24px;
     border-top-left-radius: 24px;
     border-top-right-radius: 0;
-    background-color: #292e49;
+    background-image: url('/assets/img/bg.PNG');
+    // background-color: #292e49;
     // background: linear-gradient(to right, #536976, #292e49);
 }
 
@@ -18,7 +19,8 @@ mat-card {
     right: 0;
     width: 40%;
     height: 36px;
-    background-color: #292e49;
+    // background-color: #292e49;
+    background-image: url('/assets/img/bg.PNG');
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
     display: flex;

@@ -4,7 +4,7 @@
     right: 0;
     height: 72px;
     width: 240px;
-    background: linear-gradient(to right, #12032c, #9595959c, #12032c);
+    background: linear-gradient(to left, #904e95, #9595959c, rgb(149 149 149 / 0%));
 }
 
 .logo {
@@ -16,14 +16,15 @@
     h1 {
         margin-bottom: 0;
         font-size: 32px;
-        color: #FF8C00;
+        font-weight: 600;
+        color: #ff7714;
         filter: drop-shadow(2px 0px 1px #ffffff);
     }
 
     h2 {
         margin-left: 36px;
         margin-top: -8px;
-        color: #FF8C00;
+        color: #ff7714;
         font-size: 12px;
         filter: drop-shadow(1px 0px 0px #ffffff);
     }

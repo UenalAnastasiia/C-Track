@@ -1,0 +1,16 @@
+.coins-review-box {
+    position: absolute;
+    top: calc(20vh - 36px);
+    left: 5vw;
+}
+
+mat-card {
+    width: 200px;
+    height: 100px;
+    border-radius: 24px;
+    background-image: url('/assets/img/bg.PNG');
+    
+    h2 {
+        color: #c44bce;
+    }
+}
