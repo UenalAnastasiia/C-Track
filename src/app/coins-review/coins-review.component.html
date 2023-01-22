@@ -1,5 +1,13 @@
 <div class="coins-review-box">
-    <mat-card>
-        <h2>Bitcoin</h2>
+
+    <mat-card *ngFor="let coin of coins" (click)="service.getChoosenCoinData(coin.id)">
+        <h2> #{{ coin.market_cap_rank }} {{ coin.name }} </h2>
+        <span> Price: {{ coin.current_price }} $ </span> <br>
+        <span [class.negative-percentage]="coin.price_change_percentage_24h < 0" 
+        [class.positive-percentage]="coin.price_change_percentage_24h > 0">
+            {{ coin.price_change_percentage_24h }} % </span>
+
+        <img src="{{ coin.image }}" alt="">
     </mat-card>
+
 </div>

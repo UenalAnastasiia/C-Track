@@ -10,13 +10,17 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MainComponent } from './main/main.component';
 import { CoinsReviewComponent } from './coins-review/coins-review.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ObjectToArrayPipe } from './objectPipe';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TrackingTabComponent,
     MainComponent,
-    CoinsReviewComponent
+    CoinsReviewComponent,
+    ObjectToArrayPipe
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,8 @@ import { CoinsReviewComponent } from './coins-review/coins-review.component';
     BrowserAnimationsModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

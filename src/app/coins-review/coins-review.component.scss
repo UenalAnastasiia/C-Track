@@ -2,6 +2,9 @@
     position: absolute;
     top: calc(20vh - 36px);
     left: 5vw;
+    max-height: 78vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 mat-card {
@@ -9,8 +12,32 @@ mat-card {
     height: 100px;
     border-radius: 24px;
     background-image: url('/assets/img/bg.PNG');
-    
+    margin-bottom: 16px;
+    margin-right: 12px;
+    position: relative;
+
     h2 {
         color: #c44bce;
     }
+
+    img {
+        width: 40px;
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+    }
+}
+
+.negative-percentage {
+    color: #ff4b00;
+}
+
+.positive-percentage {
+    color: #3de93d;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #c44bce;
+    border: 1px solid #00000059;
+    border-radius: 24px;
 }
