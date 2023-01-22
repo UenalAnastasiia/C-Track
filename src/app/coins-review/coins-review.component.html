@@ -1,13 +1,23 @@
 <div class="coins-review-box">
-
     <mat-card *ngFor="let coin of coins" (click)="service.getChoosenCoinData(coin.id)">
         <h2> #{{ coin.market_cap_rank }} {{ coin.name }} </h2>
-        <span> Price: {{ coin.current_price }} $ </span> <br>
-        <span [class.negative-percentage]="coin.price_change_percentage_24h < 0" 
-        [class.positive-percentage]="coin.price_change_percentage_24h > 0">
-            {{ coin.price_change_percentage_24h }} % </span>
+        <img src="{{ coin.image }}" alt="{{ coin.name }}">
 
-        <img src="{{ coin.image }}" alt="">
+        <div class="price-container">
+            <div class="percentage-box">
+                <mat-icon class="price-icon">monetization_on</mat-icon>
+                <span class="price-size"> {{ coin.current_price }} </span>
+            </div>
+
+            <div class="percentage-box">
+                <mat-icon *ngIf="coin.price_change_percentage_24h > 0"
+                    class="positive-percentage">trending_up</mat-icon>
+                <mat-icon *ngIf="coin.price_change_percentage_24h < 0"
+                    class="negative-percentage">trending_down</mat-icon>
+                <span [class.negative-percentage]="coin.price_change_percentage_24h < 0"
+                    [class.positive-percentage]="coin.price_change_percentage_24h > 0">
+                    {{ coin.price_change_percentage_24h }} % </span>
+            </div>
+        </div>
     </mat-card>
-
 </div>
