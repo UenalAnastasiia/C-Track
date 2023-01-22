@@ -7,6 +7,32 @@
     overflow-x: hidden;
 }
 
+.search-input {
+    margin-bottom: 12px;
+    margin-left: 12px;
+    padding-left: 30px;
+    border-radius: 10px;
+    width: 180px;
+    height: 30px;
+    border: 2px solid #c44bce;
+    background: #ffffff69;
+    position: relative;
+
+    &:focus {
+        background: #ffffff69;
+        border: 2px solid #c44bce;
+        outline: none;
+        color: #c44bce;
+    }
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    top: 4px;
+    color: #ffffff7d;
+}
+
 mat-card {
     width: 200px;
     height: 120px;

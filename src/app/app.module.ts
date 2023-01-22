@@ -11,7 +11,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MainComponent } from './main/main.component';
 import { CoinsReviewComponent } from './coins-review/coins-review.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ObjectToArrayPipe } from './objectPipe';
+import { FilterPipe } from './services/FilterPipe';
+import { FormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -20,7 +22,7 @@ import { ObjectToArrayPipe } from './objectPipe';
     TrackingTabComponent,
     MainComponent,
     CoinsReviewComponent,
-    ObjectToArrayPipe
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,9 @@ import { ObjectToArrayPipe } from './objectPipe';
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

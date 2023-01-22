@@ -1,7 +1,12 @@
 <div class="coins-review-box">
-    <mat-card *ngFor="let coin of coins" (click)="service.getChoosenCoinData(coin.id)">
+    <div>
+        <mat-icon class="search-icon">search</mat-icon>
+        <input matInput class="search-input" autocomplete="off" placeholder="Search" [(ngModel)]="searchText">
+    </div>
+
+    <mat-card *ngFor="let coin of coins | filter : searchText" (click)="service.getChoosenCoinData(coin.id)">
         <h2> #{{ coin.market_cap_rank }} {{ coin.name }} </h2>
-        <img src="{{ coin.image }}" alt="{{ coin.name }}">
+        <img src="{{ coin.image }}" alt="{{ coin.symbol }}">
 
         <div class="price-container">
             <div class="percentage-box">

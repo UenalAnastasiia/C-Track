@@ -8,6 +8,7 @@ import { CoinsAPIService } from '../services/coins-api.service';
 })
 export class CoinsReviewComponent implements OnInit {
   public coins: any;
+  searchText = '';
 
   constructor(public service: CoinsAPIService) { }
 
