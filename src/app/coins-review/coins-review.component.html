@@ -1,11 +1,11 @@
 <div class="coins-review-box">
     <div>
         <mat-icon class="search-icon">search</mat-icon>
-        <input matInput class="search-input" autocomplete="off" placeholder="Search" [(ngModel)]="searchText">
+        <input matInput class="search-input" autocomplete="off" placeholder="e.g. Btc" [(ngModel)]="searchText">
     </div>
 
     <mat-card *ngFor="let coin of coins | filter : searchText" (click)="service.getChoosenCoinData(coin.id)">
-        <h2> #{{ coin.market_cap_rank }} {{ coin.name }} </h2>
+        <h2> <span class="cap-rank">#{{ coin.market_cap_rank }}</span> {{ coin.name }} </h2>
         <img src="{{ coin.image }}" alt="{{ coin.symbol }}">
 
         <div class="price-container">
