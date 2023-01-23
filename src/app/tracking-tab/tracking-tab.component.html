@@ -10,13 +10,8 @@
             <span>Chart</span>
         </button>
     </div>
-    
-    <div *ngIf="!tableBtnInactive">
-        <span>{{ service.clickedCoin.name }}</span> <br>
-        <span>{{ service.clickedCoin.market_data.current_price.eur }} €</span>
-    </div>
 
-    <div *ngIf="!chartBtnInactive">
-        Track Chart
-    </div>
+    <app-table *ngIf="!tableBtnInactive && service.showClickedCoinInfo"></app-table>
+
+    <app-chart *ngIf="!chartBtnInactive && service.showClickedCoinInfo"></app-chart>
 </mat-card>

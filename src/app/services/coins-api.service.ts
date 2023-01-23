@@ -10,6 +10,7 @@ export class CoinsAPIService {
   firstCoinID: any;
   coinAmount: number = 50;
   clickedCoin: any = '';
+  showClickedCoinInfo: boolean = false;
 
 
   constructor(private httpClient: HttpClient) {
@@ -34,6 +35,8 @@ export class CoinsAPIService {
   getChoosenCoinData(name: any) {
     this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${name}`).subscribe(data => {
       this.clickedCoin = data;
+      // console.log(this.clickedCoin);
+      
     });
   }
 }

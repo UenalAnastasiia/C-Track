@@ -4,8 +4,12 @@
         <input matInput class="search-input" autocomplete="off" placeholder="e.g. Btc" [(ngModel)]="searchText">
     </div>
 
-    <mat-card *ngFor="let coin of coins | filter : searchText" (click)="service.getChoosenCoinData(coin.id)">
+    <mat-card *ngFor="let coin of coins | filter : searchText; let i = index"
+        (click)="service.getChoosenCoinData(coin.id); service.showClickedCoinInfo = true; activeElmIndex = i"
+        [class.activeElm]="i === activeElmIndex">
+
         <img src="{{ coin.image }}" alt="{{ coin.symbol }}">
+
         <div class="cap-rank">
             <span>#</span><span>{{ coin.market_cap_rank }}</span>
         </div>

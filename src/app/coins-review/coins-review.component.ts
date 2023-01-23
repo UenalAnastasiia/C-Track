@@ -9,6 +9,7 @@ import { CoinsAPIService } from '../services/coins-api.service';
 export class CoinsReviewComponent implements OnInit {
   public coins: any;
   searchText = '';
+  activeElmIndex: number;
 
   constructor(public service: CoinsAPIService) { }
 
@@ -17,8 +18,6 @@ export class CoinsReviewComponent implements OnInit {
     this.service.getAPIdata()
       .subscribe(result => {
         this.coins = result;
-        console.log(this.coins);
-        
       });
   }
 }

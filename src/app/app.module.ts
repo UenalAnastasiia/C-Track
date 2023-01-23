@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './services/FilterPipe';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { TableComponent } from './table/table.component';
+import { ChartComponent } from './chart/chart.component';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { MatInputModule } from '@angular/material/input';
     TrackingTabComponent,
     MainComponent,
     CoinsReviewComponent,
-    FilterPipe
+    FilterPipe,
+    TableComponent,
+    ChartComponent
   ],
   imports: [
     BrowserModule,
