@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CoinsAPIService } from '../services/coins-api.service';
 
 @Component({
   selector: 'app-chart',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChartComponent implements OnInit {
 
-  constructor() { }
+  constructor(public service: CoinsAPIService) { }
 
   ngOnInit(): void {
   }

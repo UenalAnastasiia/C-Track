@@ -1,1 +1,22 @@
-<p>chart works!</p>
+<div class="table-container">
+    <div class="info">
+        <div class="info-box">
+            <mat-icon class="home-icon">home</mat-icon>
+            <a href="{{ service.clickedCoin.links.homepage[0] }}" target="_blank">{{
+                service.clickedCoin.links.homepage[0]
+                }}</a>
+        </div> 
+
+        <div class="info-box">
+            <mat-icon class="green-icon">arrow_upward</mat-icon>
+            <span>24h-High:</span> 
+            <span>{{ service.clickedCoin.market_data.high_24h.eur }} €</span>
+        </div> 
+
+        <div class="info-box">
+            <mat-icon class="red-icon">arrow_downward</mat-icon>
+            <span>24h-Low:</span>
+            <span>{{ service.clickedCoin.market_data.low_24h.eur }} €</span>
+        </div>
+    </div>
+</div>
