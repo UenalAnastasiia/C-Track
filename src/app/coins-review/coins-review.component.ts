@@ -17,6 +17,8 @@ export class CoinsReviewComponent implements OnInit {
     this.service.getAPIdata()
       .subscribe(result => {
         this.coins = result;
+        console.log(this.coins);
+        
       });
   }
 }

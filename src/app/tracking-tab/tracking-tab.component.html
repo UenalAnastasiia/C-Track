@@ -12,9 +12,8 @@
     </div>
     
     <div *ngIf="!tableBtnInactive">
-        <!-- {{ coins.name }} -->
-
-        <!-- <img src="{{ service.clickedCoin.image.small }}" alt=""> -->
+        <span>{{ service.clickedCoin.name }}</span> <br>
+        <span>{{ service.clickedCoin.market_data.current_price.eur }} €</span>
     </div>
 
     <div *ngIf="!chartBtnInactive">
