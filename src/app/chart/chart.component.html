@@ -1,10 +1,9 @@
 <div class="table-container">
     <div class="info">
         <div class="info-box">
-            <mat-icon class="home-icon">home</mat-icon>
-            <a href="{{ service.clickedCoin.links.homepage[0] }}" target="_blank">{{
-                service.clickedCoin.links.homepage[0]
-                }}</a>
+            <mat-icon class="orange-icon">home</mat-icon>
+            <a href="{{ service.clickedCoin.links.homepage[0] }}" target="_blank">
+                {{ service.clickedCoin.links.homepage[0] }}</a>
         </div> 
 
         <div class="info-box">
@@ -17,6 +16,13 @@
             <mat-icon class="red-icon">arrow_downward</mat-icon>
             <span>24h-Low:</span>
             <span>{{ service.clickedCoin.market_data.low_24h.eur }} €</span>
+        </div>
+
+        <div class="info-box">
+            <button mat-button (click)="openInfo()">
+                <mat-icon class="orange-icon">info</mat-icon>
+                <span>Info</span>
+            </button>
         </div>
     </div>
 </div>

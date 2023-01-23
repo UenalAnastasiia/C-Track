@@ -14,15 +14,15 @@
     border-radius: 10px;
     width: 175px;
     height: 30px;
-    border: 2px solid #c44bce;
+    border: 2px solid var(--purple);
     background: #ffffff69;
     position: relative;
 
     &:focus {
         background: #ffffff69;
-        border: 2px solid #c44bce;
+        border: 2px solid var(--purple);
         outline: none;
-        color: #c44bce;
+        color: var(--purple);
     }
 }
 
@@ -51,14 +51,14 @@ mat-card {
 
         .cap-rank,
         h2 {
-            color: #ff6a00;
+            color: var(--orange);
         }
 
         .coin-name {
-            color: #ff6a00;
+            color: var(--orange);
 
             &::after {
-                background: #ff6a00;
+                background: var(--orange);
             }
         }
     }
@@ -72,7 +72,7 @@ mat-card {
 }
 
 .coin-name {
-    color: #c44bce;
+    color: var(--purple);
     font-size: 16px;
     margin-bottom: 12px;
     position: absolute;
@@ -87,7 +87,7 @@ mat-card {
         width: 400px;
         height: 1px;
         transform: translate(105%);
-        background: #c44bce;
+        background: var(--purple);
     }
 }
 
@@ -152,14 +152,14 @@ mat-card {
         filter: brightness(1.3);
 
     .cap-rank, h2 {
-        color: #ff6a00;
+        color: var(--orange);
     }
 
     .coin-name {
-        color: #ff6a00;
+        color: var(--orange);
 
         &::after {
-            background: #ff6a00;
+            background: var(--orange);
         }
     }
 }

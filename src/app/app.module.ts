@@ -16,6 +16,8 @@ import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { TableComponent } from './table/table.component';
 import { ChartComponent } from './chart/chart.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CoinInfoComponent } from './coin-info/coin-info.component';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import { ChartComponent } from './chart/chart.component';
     CoinsReviewComponent,
     FilterPipe,
     TableComponent,
-    ChartComponent
+    ChartComponent,
+    CoinInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { ChartComponent } from './chart/chart.component';
     MatIconModule,
     HttpClientModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class CoinsAPIService {
   firstCoinUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=1&page=1&sparkline=false';
   firstCoinID: any;
-  coinAmount: number = 50;
+  coinAmount: number = 250;
   clickedCoin: any = '';
   showClickedCoinInfo: boolean = false;
 

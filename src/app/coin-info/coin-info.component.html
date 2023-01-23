@@ -1,0 +1,10 @@
+<div class="info-box">
+    <button mat-icon-button (click)="dialogRef.close()">
+        <mat-icon>close</mat-icon>
+    </button>
+    <div class="info-header">
+        <img src="{{ service.clickedCoin.image.small }}" alt="">
+        <h2>{{ service.clickedCoin.name }}</h2>
+    </div>
+    <span [innerHTML]="service.clickedCoin.description.en"></span>
+</div>

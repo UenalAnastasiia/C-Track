@@ -1,0 +1,33 @@
+::ng-deep .mat-dialog-container {
+    padding: 0;
+    border-radius: 24px;
+}
+
+.info-box {
+    background-image: url('/assets/img/bg.PNG');
+    padding: 42px;
+    position: relative;
+
+    button {
+        position: absolute;
+        color: var(--orange);
+        top: 6px;
+        right: 12px;
+    }
+}
+
+.info-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+
+    img {
+        width: 30px;
+        margin-right: 6px;
+    }
+
+    h2 {
+        margin: 0;
+        color: var(--orange);
+    }
+  }
