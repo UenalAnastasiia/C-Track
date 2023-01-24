@@ -19,7 +19,8 @@ import { ChartComponent } from './chart/chart.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CoinInfoComponent } from './coin-info/coin-info.component';
 import { MarketComponent } from './market/market.component';
-
+import { NgChartsModule } from 'ng2-charts';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,9 @@ import { MarketComponent } from './market/market.component';
     HttpClientModule,
     FormsModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    NgChartsModule,
+    NgApexchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

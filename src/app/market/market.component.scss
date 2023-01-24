@@ -1,0 +1,25 @@
+#chart {
+  max-width: 500px;
+  margin: 35px auto;
+  padding: 0;
+}
+
+::ng-deep .apexcharts-legend-text {
+  color: rgb(250 254 255) !important;
+  font-size: 20px !important;
+}
+
+.market-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+
+  h2 {
+    position: absolute;
+    top: 0;
+    left: 24px;
+  }
+}
