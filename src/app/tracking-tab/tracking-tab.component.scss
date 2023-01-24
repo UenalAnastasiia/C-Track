@@ -53,6 +53,11 @@ mat-card {
 }
 
 .inactive-btn-table {
+    background: linear-gradient(to left, #292e49, #536976, #292e49);
+    color: white !important;
+}
+
+.inactive-btn-market {
     background: linear-gradient(to left, #536976, #292e49);
     color: white !important;
 }

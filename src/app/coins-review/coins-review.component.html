@@ -5,7 +5,11 @@
     </div>
 
     <mat-card *ngFor="let coin of coins | filter : searchText; let i = index"
-        (click)="service.getChoosenCoinData(coin.id); service.showClickedCoinInfo = true; activeElmIndex = i"
+        (click)="service.getChoosenCoinData(coin.id); 
+        tabService.chartBtnInactive = false;
+        tabService.marketBtnInactive = true;
+        service.showClickedCoinInfo = true; 
+        activeElmIndex = i"
         [class.activeElm]="i === activeElmIndex">
 
         <img src="{{ coin.image }}" alt="{{ coin.symbol }}">

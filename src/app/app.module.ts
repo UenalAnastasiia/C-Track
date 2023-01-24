@@ -18,6 +18,7 @@ import { TableComponent } from './table/table.component';
 import { ChartComponent } from './chart/chart.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CoinInfoComponent } from './coin-info/coin-info.component';
+import { MarketComponent } from './market/market.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { CoinInfoComponent } from './coin-info/coin-info.component';
     FilterPipe,
     TableComponent,
     ChartComponent,
-    CoinInfoComponent
+    CoinInfoComponent,
+    MarketComponent
   ],
   imports: [
     BrowserModule,

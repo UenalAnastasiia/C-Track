@@ -1,21 +1,31 @@
 <mat-card>
     <div class="btn-box">
-        <button mat-button (click)="tableBtnInactive = false; chartBtnInactive = true"
-            [class.inactive-btn-table]="tableBtnInactive">
+        <button mat-button (click)="tabService.marketBtnInactive = false; tabService.tableBtnInactive = true; tabService.chartBtnInactive = true"
+            [class.inactive-btn-market]="tabService.marketBtnInactive">
+            <mat-icon>home</mat-icon>
+            <span>Market</span>
+        </button>
+
+        <button mat-button (click)="tabService.tableBtnInactive = false; tabService.marketBtnInactive = true; tabService.chartBtnInactive = true"
+            [class.inactive-btn-table]="tabService.tableBtnInactive"
+            [class.d-none]="!tabService.marketBtnInactive">
             <mat-icon>table_chart</mat-icon>
             <span>Table</span>
         </button>
 
-        <button mat-button (click)="tableBtnInactive = true; chartBtnInactive = false"
-            [class.inactive-btn-chart]="chartBtnInactive">
+        <button mat-button (click)="tabService.tableBtnInactive = true; tabService.marketBtnInactive = true; tabService.chartBtnInactive = false"
+            [class.inactive-btn-chart]="tabService.chartBtnInactive"
+            [class.d-none]="!tabService.marketBtnInactive">
             <mat-icon>insights</mat-icon>
             <span>Chart</span>
         </button>
     </div>
 
-    <!-- <app-table *ngIf="!tableBtnInactive && service.showClickedCoinInfo"></app-table> -->
-    <!-- <app-chart *ngIf="!chartBtnInactive && service.showClickedCoinInfo"></app-chart> -->
-    <app-table *ngIf="!tableBtnInactive"></app-table>
+    <app-market *ngIf="tabService.tableBtnInactive && tabService.chartBtnInactive"></app-market>
 
-    <app-chart *ngIf="!chartBtnInactive"></app-chart>
+    <app-table *ngIf="!tabService.tableBtnInactive && service.showClickedCoinInfo"></app-table>
+    <app-chart *ngIf="!tabService.chartBtnInactive && service.showClickedCoinInfo"></app-chart>
+    <!-- <app-table *ngIf="!tableBtnInactive"></app-table>
+
+    <app-chart *ngIf="!chartBtnInactive"></app-chart> -->
 </mat-card>

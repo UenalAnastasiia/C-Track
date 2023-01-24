@@ -1,0 +1,9 @@
+<span>Markets: {{ market.markets }}</span>
+<br>
+<span>Active Cryptocurrencies: {{ market.active_cryptocurrencies }}</span> <br>
+<br>
+<br>
+<h3>Market Cap Percentage:</h3>
+<div *ngFor="let title of global | keyvalue">
+  <span>{{ title.key }} : {{ title.value }}</span>
+</div>
