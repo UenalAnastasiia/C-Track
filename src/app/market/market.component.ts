@@ -27,6 +27,8 @@ export class MarketComponent implements OnInit {
   async loadGlobalData() {
     let globalData = await this.service.getGlobalData();
     this.market = globalData.data;
+    console.log(this.market);
+
     this.global = globalData.data.market_cap_percentage;
     this.labeldata = Object.keys(this.global);
     this.realdata = Object.values(this.global);
@@ -43,19 +45,19 @@ export class MarketComponent implements OnInit {
         datasets: [{
           data: maindata,
           backgroundColor: [
-            '#add8e6',
-            '#90ee90',
-            '#ffb6c1',
-            '#20b2aa',
-            '#f08080',
-            '#e0ffff',
-            '#ffffe0',
-            '#3498db',
-            '#95a5a6',
-            '#f1c40f'
+            '#9B2335',
+            '#55B4B0',
+            '#C3447A',
+            '#98B4D4',
+            '#009B77',
+            '#955251',
+            '#B565A7',
+            '#DD4124',
+            '#EFC050',
+            '#5B5EA6'
           ],
           borderColor: [
-            'rgba(255, 99, 132, 1)'
+            'white'
           ],
           borderWidth: 1
         }]
@@ -67,7 +69,11 @@ export class MarketComponent implements OnInit {
             display: true,
             position: 'right',
             labels: {
-              color: 'white'
+              padding: 20,
+              color: 'white',
+              font: {
+                size: 18
+              }
             }
           }
         }
