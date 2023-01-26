@@ -20,6 +20,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CoinInfoComponent } from './coin-info/coin-info.component';
 import { MarketComponent } from './market/market.component';
 import { NgChartsModule } from 'ng2-charts';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { NgChartsModule } from 'ng2-charts';
     FormsModule,
     MatInputModule,
     MatDialogModule,
-    NgChartsModule
+    NgChartsModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]

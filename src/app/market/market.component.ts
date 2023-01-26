@@ -27,8 +27,6 @@ export class MarketComponent implements OnInit {
   async loadGlobalData() {
     let globalData = await this.service.getGlobalData();
     this.market = globalData.data;
-    console.log(this.market);
-
     this.global = globalData.data.market_cap_percentage;
     this.labeldata = Object.keys(this.global);
     this.realdata = Object.values(this.global);

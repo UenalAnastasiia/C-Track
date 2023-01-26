@@ -6,9 +6,7 @@
 
     <mat-card *ngFor="let coin of coins | filter : searchText; let i = index"
         (click)="service.getChoosenCoinData(coin.id); 
-        tabService.chartBtnInactive = false;
-        tabService.marketBtnInactive = true;
-        service.showClickedCoinInfo = true; 
+        updateClickedBtn();
         activeElmIndex = i"
         [class.activeElm]="i === activeElmIndex">
 

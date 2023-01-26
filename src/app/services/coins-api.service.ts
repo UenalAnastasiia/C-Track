@@ -11,6 +11,7 @@ export class CoinsAPIService {
   coinAmount: number = 250;
   clickedCoin: any = '';
   showClickedCoinInfo: boolean = false;
+  tableData: any = '';
 
 
   constructor(private httpClient: HttpClient) {
@@ -40,8 +41,16 @@ export class CoinsAPIService {
   getChoosenCoinData(name: any) {
     this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${name}`).subscribe(data => {
       this.clickedCoin = data;
+      this.getTableData();
       // console.log(this.clickedCoin);
-      
     });
+  }
+
+
+  getTableData() : Promise<any> {
+    return this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${this.clickedCoin.id}/market_chart?vs_currency=eur&days=30&interval=daily`).toPromise();
+    // return this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${this.clickedCoin.id}/market_chart?vs_currency=eur&days=30&interval=daily`).subscribe(data => {
+    //   this.tableData = data;
+    // });
   }
 }
