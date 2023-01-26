@@ -1,20 +1,4 @@
-<!-- <span>Markets: {{ market.markets }}</span>
-<br>
-<span>Active Cryptocurrencies: {{ market.active_cryptocurrencies }}</span> <br>
-<br>
-<br>
-<h3>Market Cap Percentage:</h3>
-<div *ngFor="let title of global | keyvalue">
-  <span>{{ title.key }} : {{ title.value }}</span>
-</div> -->
-
 <div class="market-container">
   <h2>Market Cup in Percentage from Top 10 Crypto</h2>
-  <div id="chart">
-    <apx-chart 
-    [series]="v" 
-    [chart]="chartOptions.chart" 
-    [labels]="k"
-    [responsive]="chartOptions.responsive"></apx-chart>
-  </div>
+  <canvas id="piechart"></canvas>
 </div>
