@@ -18,6 +18,7 @@ export class TableComponent implements OnInit {
     this.pushToDataSource();
   }
 
+
   ngOnInit(): void {
     this.getDate();
   }
@@ -30,27 +31,36 @@ export class TableComponent implements OnInit {
 
     this.service.getTableData().then(data => {
       for (let index = 0; index < 31; index++) {
-        if (data.prices[index][1] < 10) {
-          prices.push(data.prices[index][1].toString().replace('.', ','));
-        } else if (data.prices[index][1] > 1000) {
-          let p = data.prices[index][1].toFixed(2);
-          prices.push(this.changeFormat(p));
-        } else {
-          prices.push(data.prices[index][1].toFixed(2).toString().replace('.', ','));
-        }
-
+        this.getPrices(data, prices, index);
         volumes.push(this.changeFormat(data.total_volumes[index][1].toFixed(0)));
         marketcaps.push(this.changeFormat(data.market_caps[index][1].toFixed(0)));
       }
 
-      this.dataSource.push({'prices': prices});
-      this.dataSource.push({'volumes': volumes});
-      this.dataSource.push({'marketcaps': marketcaps}); 
-
-      this.prices = this.dataSource[1].prices;
-      this.volumes = this.dataSource[2].volumes;
-      this.marketcaps = this.dataSource[3].marketcaps;
+      this.pushData(prices, volumes, marketcaps);
     });
+  }
+
+
+  getPrices(data: any, prices: any, index:number) {
+    if (data.prices[index][1] < 10) {
+      prices.push(data.prices[index][1].toString().replace('.', ','));
+    } else if (data.prices[index][1] > 1000) {
+      let p = data.prices[index][1].toFixed(0);
+      prices.push(this.changeFormat(p));
+    } else {
+      prices.push(data.prices[index][1].toFixed(2).toString().replace('.', ','));
+    }
+  }
+
+
+  pushData(prices: any, volumes: any, marketcaps: any) {
+    this.dataSource.push({'prices': prices});
+    this.dataSource.push({'volumes': volumes});
+    this.dataSource.push({'marketcaps': marketcaps}); 
+
+    this.prices = this.dataSource[1].prices;
+    this.volumes = this.dataSource[2].volumes;
+    this.marketcaps = this.dataSource[3].marketcaps;
   }
 
 
@@ -74,5 +84,4 @@ export class TableComponent implements OnInit {
     let newDataFormat = dataFormat.format(data);
     return newDataFormat;
   }
-
 }
