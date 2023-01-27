@@ -10,10 +10,18 @@
     position: absolute;
     top: 0;
     left: 24px;
+    color: var(--orange);
   }
 }
 
 canvas {
   height: 470px !important;
   width: 470px !important;
+}
+
+.description {
+  position: absolute;
+  bottom: 8px;
+  left: 28px;
+  color: var(--orange);
 }

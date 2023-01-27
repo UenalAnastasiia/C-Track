@@ -32,6 +32,9 @@ export class TableComponent implements OnInit {
       for (let index = 0; index < 31; index++) {
         if (data.prices[index][1] < 10) {
           prices.push(data.prices[index][1].toString().replace('.', ','));
+        } else if (data.prices[index][1] > 1000) {
+          let p = data.prices[index][1].toFixed(2);
+          prices.push(this.changeFormat(p));
         } else {
           prices.push(data.prices[index][1].toFixed(2).toString().replace('.', ','));
         }

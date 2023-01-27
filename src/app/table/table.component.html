@@ -7,7 +7,7 @@
     </tr>
 
     <tr *ngFor="let data of dates; index as i">
-        <td>{{ dates[dates.length-i] }}</td>
+        <td>{{ dates[dates.length-i]  | date:'YYYY/MM/dd' }}</td>
         <td>{{ prices[prices.length-i] }}</td>
         <td>{{ volumes[volumes.length-i] }}</td>
         <td>{{ marketcaps[marketcaps.length-i] }}</td>
