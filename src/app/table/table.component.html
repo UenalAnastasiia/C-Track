@@ -1,31 +1,16 @@
-<!-- <h2>date: {{ date[0] }}</h2>
-<h2>price: {{ prices }}</h2>
-<h2>volume: {{ volumes }}</h2>
-<h2>marketcap: {{ marketcaps }}</h2> -->
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Price *</th>
+        <th>Volume *</th>
+        <th>Market Cap *</th>
+    </tr>
 
-<!-- <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <tr *ngFor="let data of dates; index as i">
+        <td>{{ dates[dates.length-i] }}</td>
+        <td>{{ prices[prices.length-i] }}</td>
+        <td>{{ volumes[volumes.length-i] }}</td>
+        <td>{{ marketcaps[marketcaps.length-i] }}</td>
+</table>
 
-    <ng-container matColumnDef="date">
-        <th mat-header-cell *matHeaderCellDef> Date </th>
-        <td mat-cell *matCellDef="let element"> {{element.date}} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef> Price (€) </th>
-        <td mat-cell *matCellDef="let element"> {{ element.prices }} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="volume">
-        <th mat-header-cell *matHeaderCellDef> Volume (€) </th>
-        <td mat-cell *matCellDef="let element"> {{ element.volumes }} </td>
-    </ng-container>
-
-    <ng-container matColumnDef="marketcap">
-        <th mat-header-cell *matHeaderCellDef> Market Cap (€) </th>
-        <td mat-cell *matCellDef="let element"> {{ element.marketcaps }} </td>
-    </ng-container>
-
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</mat-table> -->
+<span class="description">* Data in €</span>
