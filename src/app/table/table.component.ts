@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
 import { CoinsAPIService } from '../services/coins-api.service';
 
 @Component({
@@ -6,30 +6,42 @@ import { CoinsAPIService } from '../services/coins-api.service';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.scss']
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnChanges {
+  @Input() dataID;
   dates: any = '';
   prices: any = '';
   volumes: any = '';
   marketcaps: any = '';
+  id: any = '';
 
   dataSource: any[] = [];
 
   constructor(public service: CoinsAPIService) {
-    this.pushToDataSource();
   }
 
 
   ngOnInit(): void {
     this.getDate();
+    this.pushToDataSource(this.dataID.id);
   }
 
 
-  pushToDataSource() {
+  ngOnChanges(changes) {
+    console.log(changes);
+    
+    this.id = this.dataID.id;
+    this.pushToDataSource(this.id);
+  }
+
+
+  pushToDataSource(id) {
+    console.log(id);
+
     let prices = [];
     let volumes = [];
     let marketcaps = [];
 
-    this.service.getTableData().then(data => {
+    this.service.getTableData(id).then(data => {
       for (let index = 0; index < 31; index++) {
         this.getPrices(data, prices, index);
         volumes.push(this.changeFormat(data.total_volumes[index][1].toFixed(0)));
@@ -41,7 +53,7 @@ export class TableComponent implements OnInit {
   }
 
 
-  getPrices(data: any, prices: any, index:number) {
+  getPrices(data: any, prices: any, index: number) {
     if (data.prices[index][1] < 10) {
       prices.push(data.prices[index][1].toString().replace('.', ','));
     } else if (data.prices[index][1] > 1000) {
@@ -54,9 +66,9 @@ export class TableComponent implements OnInit {
 
 
   pushData(prices: any, volumes: any, marketcaps: any) {
-    this.dataSource.push({'prices': prices});
-    this.dataSource.push({'volumes': volumes});
-    this.dataSource.push({'marketcaps': marketcaps}); 
+    this.dataSource.push({ 'prices': prices });
+    this.dataSource.push({ 'volumes': volumes });
+    this.dataSource.push({ 'marketcaps': marketcaps });
 
     this.prices = this.dataSource[1].prices;
     this.volumes = this.dataSource[2].volumes;

@@ -8,12 +8,12 @@ import { TabButtonsService } from '../services/tab-buttons.service';
   styleUrls: ['./tracking-tab.component.scss']
 })
 export class TrackingTabComponent implements OnInit {
-  // marketBtnInactive: boolean = false;
-  // tableBtnInactive: boolean = true;
-  // chartBtnInactive: boolean = true;
+  dataID: any = '';
 
   
   constructor(public service: CoinsAPIService, public tabService: TabButtonsService) { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.dataID = this.service.clickedCoin;
+   }
 }

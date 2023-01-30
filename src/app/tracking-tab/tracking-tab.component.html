@@ -23,8 +23,8 @@
 
     <app-market *ngIf="tabService.tableBtnInactive && tabService.chartBtnInactive"></app-market>
 
-    <app-table *ngIf="!tabService.tableBtnInactive && service.showClickedCoinInfo"></app-table>
-    <app-chart *ngIf="!tabService.chartBtnInactive && service.showClickedCoinInfo"></app-chart>
+    <app-table *ngIf="!tabService.tableBtnInactive && service.showClickedCoinInfo" [dataID]="service.clickedCoin"></app-table>
+    <app-chart *ngIf="!tabService.chartBtnInactive && service.showClickedCoinInfo" [dataID]="service.clickedCoin"></app-chart>
     <!-- <app-table *ngIf="!tableBtnInactive"></app-table>
 
     <app-chart *ngIf="!chartBtnInactive"></app-chart> -->

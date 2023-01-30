@@ -26,7 +26,7 @@ export class CoinsReviewComponent implements OnInit {
   updateClickedBtn() {
     this.service.showClickedCoinInfo = true; 
     this.tabService.marketBtnInactive = true;
-    this.tabService.chartBtnInactive = true;
-    this.tabService.tableBtnInactive = false;
+    this.tabService.chartBtnInactive = false;
+    this.tabService.tableBtnInactive = true;
   }
 }
