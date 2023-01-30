@@ -41,16 +41,21 @@ export class CoinsAPIService {
   getChoosenCoinData(name: any) {
     this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${name}`).subscribe(data => {
       this.clickedCoin = data;
-      this.getTableData(name);
+      this.getTableData();
       // console.log(this.clickedCoin);
     });
   }
 
 
-  getTableData(name) : Promise<any> {
-    return this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${name}/market_chart?vs_currency=eur&days=30&interval=daily`).toPromise();
-    // return this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${this.clickedCoin.id}/market_chart?vs_currency=eur&days=30&interval=daily`).subscribe(data => {
-    //   this.tableData = data;
-    // });
+  getTableData() {
+    return this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${this.clickedCoin.id}/market_chart?vs_currency=eur&days=30&interval=daily`).subscribe(data => {
+      this.tableData = data;
+    });
   }
+
+
+  // getTableData(name) : Promise<any> {
+  //   return this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${name}/market_chart?vs_currency=eur&days=30&interval=daily`)
+  //   .toPromise();
+  // }
 }
