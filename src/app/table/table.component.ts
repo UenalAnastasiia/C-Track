@@ -21,7 +21,7 @@ export class TableComponent implements OnInit, OnChanges {
 
 
   ngOnInit(): void {
-    this.getDate();
+    this.getDaysInMonth();
   }
 
 
@@ -72,7 +72,7 @@ export class TableComponent implements OnInit, OnChanges {
   }
 
 
-  getDate() {
+  getDaysInMonth() {
     let date = [];
 
     for (let index = 0; index < 31; index++) {

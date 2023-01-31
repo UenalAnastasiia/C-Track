@@ -30,24 +30,17 @@ export class ChartComponent implements OnInit, OnChanges {
     this.chartData = [];
     this.coin = this.dataID;
     this.chartData = this.chartID;
-
-    this.load();
+    this.loadData();
   }
 
 
-  openInfo() {
-    this.dialog.open(CoinInfoComponent);
-  }
-
-
-  load() {
+  loadData() {
     let number = this.chartData.prices.length;
     this.prices = [];
     for (let index = 0; index < number; index++) {
       this.prices.push(this.chartData.prices[index][1]);
     }
 
-    // console.log(this.prices);
     this.createChart(this.prices);
   }
 
@@ -57,17 +50,17 @@ export class ChartComponent implements OnInit, OnChanges {
       this.chart.destroy();
     }
     
-
     this.chart = new Chart("MyChart", {
-      type: 'line', //this denotes tha type of chart
-
-      data: {// values on X-Axis
+      type: 'line', 
+      data: {
         labels: this.minutes,
         datasets:
           [
             {
               label: "Prices in 24-Hour",
-              data: prices
+              data: prices,
+              fill: true,
+              backgroundColor: '#ff63844d'
             }
           ],
       },
@@ -99,4 +92,8 @@ export class ChartComponent implements OnInit, OnChanges {
     }
   }
 
+
+  openInfo() {
+    this.dialog.open(CoinInfoComponent);
+  }
 }
