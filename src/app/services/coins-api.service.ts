@@ -12,7 +12,7 @@ export class CoinsAPIService {
   clickedCoin: any = '';
   showClickedCoinInfo: boolean = false;
   tableData: any = '';
-
+  chartData: any = '';
 
   constructor(private httpClient: HttpClient) {
     this.loadFirstCoin();
@@ -42,6 +42,7 @@ export class CoinsAPIService {
     this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${name}`).subscribe(data => {
       this.clickedCoin = data;
       this.getTableData();
+      this.getChartData();
     });
   }
 
@@ -49,6 +50,13 @@ export class CoinsAPIService {
   getTableData() {
     return this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${this.clickedCoin.id}/market_chart?vs_currency=eur&days=30&interval=daily`).subscribe(data => {
       this.tableData = data;
+    });
+  }
+
+
+  getChartData() {
+    return this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${this.clickedCoin.id}/market_chart?vs_currency=eur&days=1&interval=minute`).subscribe(data => {
+      this.chartData = data;
     });
   }
 }

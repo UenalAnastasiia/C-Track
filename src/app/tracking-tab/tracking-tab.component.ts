@@ -10,11 +10,14 @@ import { TabButtonsService } from '../services/tab-buttons.service';
 export class TrackingTabComponent implements OnInit {
   dataID: any = '';
   tableID: any = ''
+  chartID: any = '';
 
   constructor(public service: CoinsAPIService, public tabService: TabButtonsService) { }
 
   ngOnInit(): void {
+    this.chartID = '';
     this.dataID = this.service.clickedCoin;
     this.tableID = this.service.tableData;
+    this.chartID = this.service.chartData;
   }
 }
