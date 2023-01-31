@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CoinsAPIService } from '../services/coins-api.service';
 import { TabButtonsService } from '../services/tab-buttons.service';
+import { registerLocaleData } from '@angular/common';
+import es from '@angular/common/locales/es';
 
 @Component({
   selector: 'app-coins-review',
@@ -16,6 +18,8 @@ export class CoinsReviewComponent implements OnInit {
 
 
   ngOnInit(): void {
+    registerLocaleData( es );
+    
     this.service.getAPIdata()
       .subscribe(result => {
         this.coins = result;
@@ -28,5 +32,12 @@ export class CoinsReviewComponent implements OnInit {
     this.tabService.marketBtnInactive = true;
     this.tabService.chartBtnInactive = true;
     this.tabService.tableBtnInactive = false;
+  }
+
+
+  changeFormat(data: any) {
+    let dataFormat = new Intl.NumberFormat();
+    let newDataFormat = dataFormat.format(data);
+    return newDataFormat;
   }
 }

@@ -1,11 +1,6 @@
-/* You can add global styles to this file, and also import other style files */
-
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  // background: #12032c;
-  // background: linear-gradient(to right, #d38312,#a83279);
-  // background: linear-gradient(to right, #fd746c, #ff9068);
   background: linear-gradient(to right, #e96443, #904e95);
   cursor: context-menu;
 }
@@ -13,6 +8,7 @@ body {
 :root {
   --orange: #ff6a00;
   --purple: #c44bce;
+  --bg: #1b2b3b;
 }
 
 *::-webkit-scrollbar {

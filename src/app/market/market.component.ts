@@ -1,8 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CoinsAPIService } from '../services/coins-api.service';
-import { Chart, registerables } from 'node_modules/chart.js'
-Chart.register(...registerables);
-
+import { Chart, registerables } from 'node_modules/chart.js';
 
 @Component({
   selector: 'app-market',
@@ -21,6 +19,8 @@ export class MarketComponent implements OnInit {
   constructor(public service: CoinsAPIService) { }
 
   ngOnInit(): void {
+    Chart.register(...registerables);
+    
     this.loadGlobalData();
   }
 

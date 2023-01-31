@@ -42,7 +42,6 @@ export class CoinsAPIService {
     this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${name}`).subscribe(data => {
       this.clickedCoin = data;
       this.getTableData();
-      // console.log(this.clickedCoin);
     });
   }
 
@@ -52,10 +51,4 @@ export class CoinsAPIService {
       this.tableData = data;
     });
   }
-
-
-  // getTableData(name) : Promise<any> {
-  //   return this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${name}/market_chart?vs_currency=eur&days=30&interval=daily`)
-  //   .toPromise();
-  // }
 }

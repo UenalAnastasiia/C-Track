@@ -8,7 +8,7 @@ mat-card {
     border-bottom-right-radius: 24px;
     border-top-left-radius: 24px;
     border-top-right-radius: 0;
-    background-image: url('/assets/img/bg.PNG');
+    background: var(--bg);
 }
 
 .btn-box {
@@ -17,7 +17,7 @@ mat-card {
     right: 0;
     width: 40%;
     height: 36px;
-    background-image: url('/assets/img/bg.PNG');
+    background: var(--bg);
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
     display: flex;

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChange } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { CoinsAPIService } from '../services/coins-api.service';
 
 @Component({
@@ -50,10 +50,12 @@ export class TableComponent implements OnInit, OnChanges {
   getPrices(tableData: any, prices: any, index: number) {
     if (tableData.prices[index][1] < 10) {
       prices.push(tableData.prices[index][1].toString().replace('.', ','));
-    } else if (tableData.prices[index][1] > 1000) {
-      let p = tableData.prices[index][1].toFixed(0);
+    } 
+    else if (tableData.prices[index][1] > 1000) {
+      let p = tableData.prices[index][1].toFixed(2);
       prices.push(this.changeFormat(p));
-    } else {
+    } 
+    else {
       prices.push(tableData.prices[index][1].toFixed(2).toString().replace('.', ','));
     }
   }
