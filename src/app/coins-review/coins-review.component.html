@@ -19,8 +19,8 @@
         <div class="price-container">
             <div class="percentage-box">
                 <mat-icon class="price-icon">monetization_on</mat-icon>
-                <span *ngIf="coin.current_price > 1" class="price-size"> {{ coin.current_price.toFixed(2) | number:'':'es' }} €</span>
-                <span *ngIf="coin.current_price < 1" class="price-size"> {{ coin.current_price | number:'':'es' }} €</span>
+                <span *ngIf="coin.current_price > 10" class="price-size"> {{ coin.current_price.toFixed(2) | number:'':'es' }} €</span>
+                <span *ngIf="coin.current_price < 10" class="price-size"> {{ coin.current_price | number:'':'es' }} €</span>
             </div>
 
             <div class="percentage-box">

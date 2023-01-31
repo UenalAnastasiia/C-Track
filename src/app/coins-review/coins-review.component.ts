@@ -33,11 +33,4 @@ export class CoinsReviewComponent implements OnInit {
     this.tabService.chartBtnInactive = true;
     this.tabService.tableBtnInactive = false;
   }
-
-
-  changeFormat(data: any) {
-    let dataFormat = new Intl.NumberFormat();
-    let newDataFormat = dataFormat.format(data);
-    return newDataFormat;
-  }
 }
