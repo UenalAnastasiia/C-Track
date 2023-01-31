@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Chart, registerables } from 'chart.js';
 import { CoinInfoComponent } from '../coin-info/coin-info.component';
@@ -16,6 +16,7 @@ export class ChartComponent implements OnInit, OnChanges {
   coin: any = '';
   public chart: any;
   prices = [];
+  minutes = [];
 
   constructor(public service: CoinsAPIService, public dialog: MatDialog) { }
 
@@ -25,10 +26,11 @@ export class ChartComponent implements OnInit, OnChanges {
 
 
   ngOnChanges() {
+    this.getMinutes();
     this.chartData = [];
     this.coin = this.dataID;
     this.chartData = this.chartID;
-    
+
     this.load();
   }
 
@@ -45,7 +47,7 @@ export class ChartComponent implements OnInit, OnChanges {
       this.prices.push(this.chartData.prices[index][1]);
     }
 
-    console.log(this.prices);
+    // console.log(this.prices);
     this.createChart(this.prices);
   }
 
@@ -54,27 +56,47 @@ export class ChartComponent implements OnInit, OnChanges {
     if (this.chart) {
       this.chart.destroy();
     }
+    
 
     this.chart = new Chart("MyChart", {
       type: 'line', //this denotes tha type of chart
 
       data: {// values on X-Axis
-        labels: ['2022-05-10', '2022-05-11', '2022-05-12', '2022-05-13',
-          '2022-05-14', '2022-05-15', '2022-05-16', '2022-05-17',],
-        datasets: 
-        [
-          {
-            label: "Prices in 24-Hour",
-            data: prices,
-            backgroundColor: 'blue'
-          },
-        ]
+        labels: this.minutes,
+        datasets:
+          [
+            {
+              label: "Prices in 24-Hour",
+              data: prices
+            }
+          ],
       },
       options: {
-        aspectRatio: 2.5
+        aspectRatio: 2.5,
+        plugins: {
+          legend: {
+            display: true,
+            position: 'top',
+            align: 'end',
+            labels: {
+              color: 'white'
+            }
+          }
+        }
       }
-
     });
+  }
+
+
+  getMinutes() {
+    this.minutes = [];
+
+    for (let index = 0; index < 288; index++) {
+      let startTime = new Date();
+      let endTime = new Date(new Date().setMinutes(startTime.getMinutes() - index * 5));
+      let dateForm = endTime.getHours() + ':' + ((endTime.getMinutes()<10?'0':'') + endTime.getMinutes());
+      this.minutes.push(dateForm);
+    }
   }
 
 }
