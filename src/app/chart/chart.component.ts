@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Chart, registerables } from 'chart.js';
 import { CoinInfoComponent } from '../coin-info/coin-info.component';
 import { CoinsAPIService } from '../services/coins-api.service';
-import {FormGroup, FormControl} from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-chart',
@@ -53,13 +53,17 @@ export class ChartComponent implements OnInit, OnChanges {
     }
   ];
 
+  maxDate: Date;
   trackDate = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
 
 
-  constructor(public service: CoinsAPIService, public dialog: MatDialog) { }
+  constructor(public service: CoinsAPIService, public dialog: MatDialog) {
+    this.maxDate = new Date(new Date().setDate(new Date().getDate())); 
+  }
+
 
   ngOnInit(): void {
     Chart.register(...registerables);
