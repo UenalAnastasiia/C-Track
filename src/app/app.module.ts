@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,8 @@ import { CoinInfoComponent } from './coin-info/coin-info.component';
 import { MarketComponent } from './market/market.component';
 import { NgChartsModule } from 'ng2-charts';
 import { MatTableModule } from '@angular/material/table';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { GlobalErrorHandler } from './services/global-error-handler-component';
 
 @NgModule({
   declarations: [
@@ -46,9 +48,12 @@ import { MatTableModule } from '@angular/material/table';
     MatInputModule,
     MatDialogModule,
     NgChartsModule,
-    MatTableModule
+    MatTableModule,
+    MatSnackBarModule
   ],
-  providers: [],
+  providers: [
+    { provide: ErrorHandler, useClass: GlobalErrorHandler }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
