@@ -1,6 +1,14 @@
 <div class="table-container">
+    <div class="data-btn-box">
+        <div *ngFor="let button of periodBtn">
+            <button mat-raised-button (click)="service.getChartDataByPeriod(button.data); getPeriod(button.period)">
+                {{ button.name }}
+            </button>
+        </div>
+    </div>
+
     <div class="chart-container">
-        <canvas  id="MyChart">{{ chart }}</canvas>
+        <canvas id="MyChart">{{ chart }}</canvas>
     </div>
 
     <div class="info">
@@ -8,13 +16,13 @@
             <mat-icon class="orange-icon">home</mat-icon>
             <a href="{{ service.clickedCoin.links.homepage[0] }}" target="_blank">
                 {{ coin.links.homepage[0] }}</a>
-        </div> 
+        </div>
 
         <div class="info-box">
             <mat-icon class="green-icon">arrow_upward</mat-icon>
-            <span>24h-High:</span> 
+            <span>24h-High:</span>
             <span>{{ coin.market_data.high_24h.eur }} €</span>
-        </div> 
+        </div>
 
         <div class="info-box">
             <mat-icon class="red-icon">arrow_downward</mat-icon>

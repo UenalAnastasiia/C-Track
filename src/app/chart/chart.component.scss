@@ -26,7 +26,8 @@
     }
 
     span {
-        color: var(--orange);;
+        color: var(--orange);
+        ;
 
         &:last-child {
             color: white;
@@ -36,7 +37,7 @@
 
     a {
         text-decoration: none;
-        color: white; 
+        color: white;
 
         &:hover {
             text-decoration: underline;
@@ -58,4 +59,19 @@
 
 .chart-container {
     margin-top: 24px;
+}
+
+.data-btn-box {
+    display: flex;
+    margin-left: 32px;
+
+    button {
+        background: #ff63844d;
+        margin: 12px;
+        min-width: 32px;
+
+        &:hover {
+            filter: brightness(1.3);
+        }
+    }
 }

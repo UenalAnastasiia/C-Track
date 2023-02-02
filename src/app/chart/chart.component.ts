@@ -16,7 +16,40 @@ export class ChartComponent implements OnInit, OnChanges {
   coin: any = '';
   public chart: any;
   prices = [];
-  minutes = [];
+  period = [];
+  currentPeriod = 1;
+  periodBtn = [
+    {
+      data: 1,
+      name: '1 D',
+      period: 1
+    },
+    {
+      data: 6,
+      name: '7 D',
+      period: 7
+    },
+    {
+      data: 30,
+      name: '30 D',
+      period: 31
+    },
+    {
+      data: 93,
+      name: '3 M',
+      period: 94
+    },
+    {
+      data: 182,
+      name: '6 M',
+      period: 183
+    },
+    {
+      data: 364,
+      name: '1 Y',
+      period: 365
+    }
+  ]
 
   constructor(public service: CoinsAPIService, public dialog: MatDialog) { }
 
@@ -26,11 +59,11 @@ export class ChartComponent implements OnInit, OnChanges {
 
 
   ngOnChanges() {
-    this.getMinutes();
     this.chartData = [];
     this.coin = this.dataID;
     this.chartData = this.chartID;
     this.loadData();
+    this.getPeriod(this.currentPeriod);
   }
 
 
@@ -49,15 +82,15 @@ export class ChartComponent implements OnInit, OnChanges {
     if (this.chart) {
       this.chart.destroy();
     }
-    
+
     this.chart = new Chart("MyChart", {
-      type: 'line', 
+      type: 'line',
       data: {
-        labels: this.minutes,
+        labels: this.period,
         datasets:
           [
             {
-              label: "Prices in 24-Hour",
+              label: "Overview of prices in €",
               data: prices,
               fill: true,
               backgroundColor: '#ff63844d'
@@ -81,14 +114,34 @@ export class ChartComponent implements OnInit, OnChanges {
   }
 
 
-  getMinutes() {
-    this.minutes = [];
+  getPeriod(period: number) {
+    this.period = [];
 
+    if (period == 1) {
+      this.pushMinutesToPeriod();
+    } else {
+      this.pushDaysToPeriod(period);
+    }
+  }
+
+
+  pushMinutesToPeriod() {
     for (let index = 0; index < 288; index++) {
-      let startTime = new Date();
-      let endTime = new Date(new Date().setMinutes(startTime.getMinutes() - index * 5));
-      let dateForm = endTime.getHours() + ':' + ((endTime.getMinutes()<10?'0':'') + endTime.getMinutes());
-      this.minutes.push(dateForm);
+      let start = new Date();
+      let startTime = new Date(start.setDate(start.getDate() - 2));
+      let endTime = new Date(new Date().setMinutes(startTime.getMinutes() + index * 5));
+      let dateForm = endTime.getHours() + ':' + ((endTime.getMinutes() < 10 ? '0' : '') + endTime.getMinutes());
+      this.period.push(dateForm);
+    }
+  }
+
+
+  pushDaysToPeriod(period: number) {
+    for (let index = 0; index < period; index++) {
+      let today = new Date();
+      let indexDate = new Date(new Date().setDate(today.getDate() - period + index));
+      let dateForm = indexDate.getFullYear() + '/' + (indexDate.getMonth() + 1) + '/' + indexDate.getDate();
+      this.period.push(dateForm);
     }
   }
 

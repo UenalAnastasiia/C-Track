@@ -13,7 +13,7 @@
             <span>Table</span>
         </button>
 
-        <button mat-button (click)="tabService.tableBtnInactive = true; tabService.marketBtnInactive = true; tabService.chartBtnInactive = false"
+        <button mat-button (click)="chooseChart()"
             [class.inactive-btn-chart]="tabService.chartBtnInactive"
             [class.d-none]="!tabService.marketBtnInactive">
             <mat-icon>insights</mat-icon>

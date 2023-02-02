@@ -20,4 +20,12 @@ export class TrackingTabComponent implements OnInit {
     this.tableID = this.service.tableData;
     this.chartID = this.service.chartData;
   }
+
+
+  chooseChart() {
+    this.service.getChartDataByPeriod(1);
+    this.tabService.tableBtnInactive = true; 
+    this.tabService.marketBtnInactive = true; 
+    this.tabService.chartBtnInactive = false; 
+  }
 }
