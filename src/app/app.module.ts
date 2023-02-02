@@ -12,7 +12,7 @@ import { MainComponent } from './main/main.component';
 import { CoinsReviewComponent } from './coins-review/coins-review.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterPipe } from './services/FilterPipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { TableComponent } from './table/table.component';
 import { ChartComponent } from './chart/chart.component';
@@ -23,6 +23,8 @@ import { NgChartsModule } from 'ng2-charts';
 import { MatTableModule } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { GlobalErrorHandler } from './services/global-error-handler-component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -49,10 +51,14 @@ import { GlobalErrorHandler } from './services/global-error-handler-component';
     MatDialogModule,
     NgChartsModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
-    { provide: ErrorHandler, useClass: GlobalErrorHandler }
+    // { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   bootstrap: [AppComponent]
 })

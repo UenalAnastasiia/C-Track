@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Chart, registerables } from 'chart.js';
 import { CoinInfoComponent } from '../coin-info/coin-info.component';
 import { CoinsAPIService } from '../services/coins-api.service';
+import {FormGroup, FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-chart',
@@ -17,6 +18,7 @@ export class ChartComponent implements OnInit, OnChanges {
   public chart: any;
   prices = [];
   period = [];
+  showDatePicker: boolean = false;
   currentPeriod = 1;
   periodBtn = [
     {
@@ -49,7 +51,13 @@ export class ChartComponent implements OnInit, OnChanges {
       name: '1 Y',
       period: 365
     }
-  ]
+  ];
+
+  trackDate = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
+
 
   constructor(public service: CoinsAPIService, public dialog: MatDialog) { }
 

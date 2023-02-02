@@ -63,7 +63,14 @@
 
 .data-btn-box {
     display: flex;
+    flex-direction: column;
     margin-left: 32px;
+
+    div {
+        &:first-child {
+            display: flex;
+        }
+    }
 
     button {
         background: #ff63844d;
@@ -74,4 +81,19 @@
             filter: brightness(1.3);
         }
     }
+
+    mat-icon {
+        margin-bottom: 4px;
+    }
+}
+
+::ng-deep .mat-form-field-infix {
+    display: flex !important;
+    height: 12px !important;
+}
+
+::ng-deep .mat-icon-button {
+    position: absolute;
+    top: -18px;
+    right: 0;
 }
