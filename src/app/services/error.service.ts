@@ -25,7 +25,7 @@ export class ErrorService {
         var msg = error.error.Message;
         if (!!msg)
             return msg + " : " + error.error.ExceptionMessage;
-        return "API-Limit was exceeded, please try again later...";
+        return "API-Limit was exceeded, please reload the page or try again later.";
     }
 
     getServerStack(error: HttpErrorResponse): string {

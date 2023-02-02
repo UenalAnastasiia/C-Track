@@ -22,7 +22,7 @@ export class GlobalErrorHandler implements ErrorHandler {
             message = errorService.getClientMessage(error);
 
         this.snackBar.open(message, 'X', { 
-            panelClass: ['error'],
+            panelClass: ['error', 'snackbar-error'],
             verticalPosition: this.verticalPosition,
             horizontalPosition: this.horizontalPosition 
         });
