@@ -4,6 +4,7 @@ import { Chart, registerables } from 'chart.js';
 import { CoinInfoComponent } from '../coin-info/coin-info.component';
 import { CoinsAPIService } from '../services/coins-api.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-chart',
@@ -18,8 +19,18 @@ export class ChartComponent implements OnInit, OnChanges {
   public chart: any;
   prices = [];
   period = [];
+
   showDatePicker: boolean = false;
   currentPeriod = 1;
+  maxDate = new Date();
+  trackDate = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
+
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+
   periodBtn = [
     {
       data: 1,
@@ -53,16 +64,8 @@ export class ChartComponent implements OnInit, OnChanges {
     }
   ];
 
-  maxDate: Date;
-  trackDate = new FormGroup({
-    start: new FormControl<Date | null>(null),
-    end: new FormControl<Date | null>(null),
-  });
 
-
-  constructor(public service: CoinsAPIService, public dialog: MatDialog) {
-    this.maxDate = new Date(new Date().setDate(new Date().getDate())); 
-  }
+  constructor(public service: CoinsAPIService, public dialog: MatDialog, public snackBar: MatSnackBar) { }
 
 
   ngOnInit(): void {
@@ -131,6 +134,8 @@ export class ChartComponent implements OnInit, OnChanges {
 
     if (period == 1) {
       this.pushMinutesToPeriod();
+    } else if (period == 0) {
+      this.pushChoosenDaysToPeriod();
     } else {
       this.pushDaysToPeriod(period);
     }
@@ -155,6 +160,39 @@ export class ChartComponent implements OnInit, OnChanges {
       let dateForm = indexDate.getFullYear() + '/' + (indexDate.getMonth() + 1) + '/' + indexDate.getDate();
       this.period.push(dateForm);
     }
+  }
+
+
+  pushChoosenDaysToPeriod() {
+    if (this.trackDate.value.start == null || this.trackDate.value.end == null) {
+      this.showDateMessage();
+    } else {
+      this.getChoosenDays();
+    }
+  }
+
+
+  getChoosenDays() {
+    let start = new Date(this.trackDate.value.start);
+    let end = new Date(this.trackDate.value.end);
+    const date = new Date(start.getTime());
+
+    while (date <= end) {
+      this.period.push(new Date(date));
+      date.setDate(date.getDate() + 1);
+    }
+
+    console.log(this.period);
+  }
+
+
+  showDateMessage() {
+    this.snackBar.open('Please choose a tracking date!', '', {
+      panelClass: ['snackbar-box'],
+      verticalPosition: this.verticalPosition,
+      horizontalPosition: this.horizontalPosition,
+      duration: 1500
+    });
   }
 
 

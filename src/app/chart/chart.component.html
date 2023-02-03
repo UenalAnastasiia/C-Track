@@ -14,7 +14,7 @@
             </div>
         </div>
 
-        <div *ngIf="showDatePicker"> 
+        <div *ngIf="showDatePicker" class="calendar-box"> 
             <mat-form-field appearance="fill">
                 <mat-label>Enter a tracking date</mat-label>
                 <mat-date-range-input [formGroup]="trackDate" [rangePicker]="picker" [max]="maxDate">
@@ -29,7 +29,9 @@
                 <mat-error *ngIf="trackDate.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
               </mat-form-field>
 
-              <p>Selected range: {{trackDate.value | json}}</p>
+              <button mat-icon-button (click)="getPeriod(0)">
+                <mat-icon>check_circle</mat-icon>
+              </button>
         </div>
     </div>
 

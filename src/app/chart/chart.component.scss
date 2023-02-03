@@ -57,10 +57,6 @@
     color: var(--orange);
 }
 
-.chart-container {
-    margin-top: 24px;
-}
-
 .data-btn-box {
     display: flex;
     flex-direction: column;
@@ -96,4 +92,14 @@
     position: absolute;
     top: -18px;
     right: 0;
+}
+
+.calendar-box {
+    position: relative;
+
+    button {
+        position: absolute;
+        left: 220px;
+        top: -8px;
+    }
 }
