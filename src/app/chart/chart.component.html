@@ -1,9 +1,20 @@
+<div class="progress-spinner" *ngIf="progressBar">
+    <mat-spinner></mat-spinner>
+  </div>
+
 <div class="table-container">
     <div class="data-btn-box">
         <div>
             <div *ngFor="let button of periodBtn">
-                <button mat-raised-button (click)="service.getChartDataByPeriod(button.data); getPeriod(button.period)">
+                <button mat-raised-button
+                    (click)="service.getChartDataByPeriod(button.data); getPeriod(button.period); !showDatePicker">
                     {{ button.name }}
+                </button>
+            </div>
+
+            <div>
+                <button mat-raised-button (click)="showDatePicker = !showDatePicker">
+                    <mat-icon>calendar_month</mat-icon>
                 </button>
             </div>
 
@@ -12,6 +23,27 @@
                     <mat-icon>fullscreen</mat-icon>
                 </button>
             </div>
+        </div>
+
+        <div *ngIf="showDatePicker" class="calendar-box">
+            <mat-form-field appearance="fill">
+                <mat-label>Enter a tracking date</mat-label>
+                <mat-date-range-input [formGroup]="trackDate" [rangePicker]="picker" [max]="maxDate">
+                    <input matStartDate formControlName="start" placeholder="Start date">
+                    <input matEndDate formControlName="end" placeholder="End date">
+                </mat-date-range-input>
+                <mat-hint>max. 7 days</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+
+                <mat-error *ngIf="trackDate.controls.start.hasError('matStartDateInvalid')">Invalid start
+                    date</mat-error>
+                <mat-error *ngIf="trackDate.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+            </mat-form-field>
+
+            <button mat-icon-button (click)="getPeriod(0)">
+                <mat-icon>check_circle</mat-icon>
+            </button>
         </div>
     </div>
 

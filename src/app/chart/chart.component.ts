@@ -3,6 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { Chart, registerables } from 'chart.js';
 import { CoinInfoComponent } from '../coin-info/coin-info.component';
 import { CoinsAPIService } from '../services/coins-api.service';
+import { FormGroup, FormControl } from '@angular/forms';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-chart',
@@ -19,6 +22,17 @@ export class ChartComponent implements OnInit, OnChanges {
   period = [];
   currentPeriod = 1;
   fullscreenMode: boolean = false;
+  showDatePicker: boolean = false;
+  maxDate = new Date();
+  trackDate = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
+  progressBar: boolean = false;
+  choosenData: boolean = false;
+
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
 
   periodBtn = [
     {
@@ -54,7 +68,7 @@ export class ChartComponent implements OnInit, OnChanges {
   ];
 
 
-  constructor(public service: CoinsAPIService, public dialog: MatDialog) { }
+  constructor(public service: CoinsAPIService, public dialog: MatDialog, public snackBar: MatSnackBar) { }
 
 
   ngOnInit(): void {
@@ -72,10 +86,15 @@ export class ChartComponent implements OnInit, OnChanges {
 
 
   loadData() {
-    let number = this.chartData.prices.length;
-    this.prices = [];
-    for (let index = 0; index < number; index++) {
-      this.prices.push(this.chartData.prices[index][1]);
+    if (this.choosenData) {
+      this.prices = [];
+      this.prices = this.chartData;
+    } else {
+      let number = this.chartData.prices.length;
+      this.prices = [];
+      for (let index = 0; index < number; index++) {
+        this.prices.push(this.chartData.prices[index][1]);
+      }
     }
 
     this.createChart(this.prices);
@@ -122,8 +141,14 @@ export class ChartComponent implements OnInit, OnChanges {
     this.period = [];
 
     if (period == 1) {
+      this.choosenData = false;
       this.pushMinutesToPeriod();
+    } else if (period == 0) {
+      this.choosenData = true;
+      this.showDatePicker = false;
+      this.pushChoosenDaysToPeriod();
     } else {
+      this.choosenData = false;
       this.pushDaysToPeriod(period);
     }
   }
@@ -147,6 +172,63 @@ export class ChartComponent implements OnInit, OnChanges {
       let dateForm = indexDate.getFullYear() + '/' + (indexDate.getMonth() + 1) + '/' + indexDate.getDate();
       this.period.push(dateForm);
     }
+  }
+
+
+  pushChoosenDaysToPeriod() {
+    if (this.trackDate.value.start == null || this.trackDate.value.end == null) {
+      this.showDateMessage();
+    } else {
+      this.getChoosenDays();
+    }
+  }
+
+
+  getChoosenDays() {
+    let start = new Date(this.trackDate.value.start);
+    let end = new Date(this.trackDate.value.end);
+    const date = new Date(start.getTime());
+
+    while (date <= end) {
+      this.period.push(new Date(date));
+      date.setDate(date.getDate() + 1);
+    }
+    this.loadChoosenData();
+  }
+
+
+  loadChoosenData() {
+    let choosenDate = [];
+    let number = this.period.length;
+    let time = this.period;
+
+    for (let index = 0; index < number; index++) {
+      let form = time[index].getDate() + '-' + (time[index].getMonth() + 1) + '-' + time[index].getFullYear();
+      choosenDate.push(form);
+    }
+
+    this.period = [];
+    for (let index = 0; index < choosenDate.length; index++) {
+      let dateForm = time[index].getFullYear() + '/' + (time[index].getMonth() + 1) + '/' + time[index].getDate();
+      this.period.push(dateForm);
+    }
+
+    this.service.getDataByChoosenDate(choosenDate);
+
+    this.progressBar = true;
+    setTimeout(() => {
+      this.progressBar = false;
+    }, 5000);
+  }
+
+
+  showDateMessage() {
+    this.snackBar.open('Please choose a tracking date!', '', {
+      panelClass: ['snackbar-box'],
+      verticalPosition: this.verticalPosition,
+      horizontalPosition: this.horizontalPosition,
+      duration: 1500
+    });
   }
 
 

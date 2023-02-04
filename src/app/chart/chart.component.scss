@@ -123,3 +123,31 @@
     position: absolute;
     right: 0;
 }
+
+.calendar-box {
+    position: relative;
+
+    button {
+        position: absolute;
+        left: 220px;
+        top: -8px;
+    }
+}
+
+.progress-spinner {
+    height: 100vh;
+    width: 100vw;
+    background: rgb(252 252 252 / 62%);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    margin-left: -26vw;
+    margin-top: -18vh;
+
+    ::ng-deep .mat-progress-spinner circle,
+    .mat-spinner circle {
+        stroke: var(--orange);
+    }
+}

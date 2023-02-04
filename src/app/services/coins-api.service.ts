@@ -12,8 +12,9 @@ export class CoinsAPIService {
   clickedCoin: any = '';
   showClickedCoinInfo: boolean = false;
   tableData: any = '';
-  chartData: any = '';
+  chartData: any = [];
   currentPeriod = 1;
+  choose = [];
 
   constructor(private httpClient: HttpClient) {
     this.loadFirstCoin();
@@ -32,6 +33,19 @@ export class CoinsAPIService {
   getGlobalData(): Promise<any> {
     return this.httpClient.get('https://api.coingecko.com/api/v3/global').toPromise();
   }
+
+
+  // getGlobal(name: any) {
+  //   // console.log('Name of coins: ', name);
+  //   let tableCoins = [];
+  //   for (let index = 0; index < name.length; index++) {
+  //     this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${name[index]}`).subscribe(data => {
+  //       tableCoins.push(data);
+  //     });
+  //   }
+  //   console.log('Data: ', );
+
+  // }
 
 
   getAPIdata(): Observable<any> {
@@ -60,10 +74,24 @@ export class CoinsAPIService {
       return this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${this.clickedCoin.id}/market_chart?vs_currency=eur&days=1&interval=minute`).subscribe(data => {
         this.chartData = data;
       });
-    } else {
+    }
+    else if (period == 0) {
+      this.chartData = this.choose;
+    }
+    else {
       return this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${this.clickedCoin.id}/market_chart?vs_currency=eur&days=${period}&interval=daily`).subscribe(data => {
         this.chartData = data;
       });
     }
+  }
+
+
+  getDataByChoosenDate(date: any) {
+    for (let index = 0; index < date.length; index++) {
+      this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${this.clickedCoin.id}/history?date=${date[index]}`).subscribe(data => {
+        this.choose.push(data['market_data'].current_price.eur);
+      });
+    }
+    this.chartData = this.choose;
   }
 }

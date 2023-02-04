@@ -32,6 +32,7 @@ export class MarketComponent implements OnInit {
     this.realdata = Object.values(this.global);
 
     this.RenderChart(this.labeldata, this.realdata);
+    // this.service.getGlobal(this.labeldata);
   }
 
 
@@ -70,7 +71,7 @@ export class MarketComponent implements OnInit {
               padding: 20,
               color: 'white',
               font: {
-                size: 18
+                size: 14
               }
             }
           }
