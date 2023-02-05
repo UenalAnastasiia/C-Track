@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CoinsAPIService } from '../services/coins-api.service';
 import { Chart, registerables } from 'node_modules/chart.js';
+import { TabButtonsService } from '../services/tab-buttons.service';
+import { registerLocaleData } from '@angular/common';
+import es from '@angular/common/locales/es';
 
 @Component({
   selector: 'app-market',
@@ -14,13 +17,17 @@ export class MarketComponent implements OnInit {
 
   labeldata: any[] = [];
   realdata: any[] = [];
+  updateTime: any;
+  timestamp: any;
+  coinTable: any;
 
 
-  constructor(public service: CoinsAPIService) { }
+  constructor(public service: CoinsAPIService, public tabService: TabButtonsService) { }
 
   ngOnInit(): void {
+    registerLocaleData(es);
     Chart.register(...registerables);
-    
+
     this.loadGlobalData();
   }
 
@@ -32,7 +39,25 @@ export class MarketComponent implements OnInit {
     this.realdata = Object.values(this.global);
 
     this.RenderChart(this.labeldata, this.realdata);
-    // this.service.getGlobal(this.labeldata);
+    this.renderTable();
+    this.getUpdateTime();
+  }
+
+  
+  getUpdateTime() {
+    this.timestamp = new Date(this.market.updated_at);
+    let theDate = new Date(this.timestamp * 1000);
+    this.updateTime = theDate.toString();
+  }
+
+
+  renderTable() {
+    this.service.getAPIdata(10)
+    .subscribe(result => {
+      this.coinTable = result;
+      console.log(this.coinTable);
+      
+    });
   }
 
 
@@ -78,5 +103,13 @@ export class MarketComponent implements OnInit {
         }
       }
     });
+  }
+
+
+  updateClickedBtn() {
+    this.service.showClickedCoinInfo = true;
+    this.tabService.marketBtnInactive = true;
+    this.tabService.chartBtnInactive = false;
+    this.tabService.tableBtnInactive = true;
   }
 }

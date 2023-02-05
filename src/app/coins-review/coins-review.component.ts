@@ -18,9 +18,9 @@ export class CoinsReviewComponent implements OnInit {
 
 
   ngOnInit(): void {
-    registerLocaleData( es );
-    
-    this.service.getAPIdata()
+    registerLocaleData(es);
+
+    this.service.getAPIdata(250)
       .subscribe(result => {
         this.coins = result;
       });
@@ -28,7 +28,7 @@ export class CoinsReviewComponent implements OnInit {
 
 
   updateClickedBtn() {
-    this.service.showClickedCoinInfo = true; 
+    this.service.showClickedCoinInfo = true;
     this.tabService.marketBtnInactive = true;
     this.tabService.chartBtnInactive = false;
     this.tabService.tableBtnInactive = true;

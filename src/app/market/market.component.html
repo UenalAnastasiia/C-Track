@@ -1,24 +1,36 @@
 <div class="market-container">
-  <h2>Market share of the top 10 cryptocurrencies *</h2>
-  <canvas id="piechart"></canvas>
+  <div>
+    <h2>Market share of the top 10 cryptocurrencies *</h2>
+    <canvas id="piechart"></canvas>
+  </div>
+  
+  <div class="table-box">
+    <table>
+      <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>High_24h</th>
+        <th>Low_24h</th>
+      </tr>
+  
+      <tr *ngFor="let coin of coinTable">
+        <td>{{ coin.market_cap_rank }}</td>
+        <td (click)="service.getChoosenCoinData(coin.id); tabService.activeBtnIndex = 0; updateClickedBtn()" class="name-td">{{ coin.name }}</td>
+        
+        <td *ngIf="coin.current_price > 10"> {{ coin.current_price.toFixed(2) | number:'':'es' }} €</td>
+        <td *ngIf="coin.current_price < 10"> {{ coin.current_price | number:'':'es' }} €</td>
+
+        <td *ngIf="coin.high_24h > 10"> {{ coin.high_24h.toFixed(2) | number:'':'es' }} €</td>
+        <td *ngIf="coin.high_24h < 10"> {{ coin.high_24h | number:'':'es' }} €</td>
+
+        <td *ngIf="coin.low_24h > 10"> {{ coin.low_24h.toFixed(2) | number:'':'es' }} €</td>
+        <td *ngIf="coin.low_24h < 10"> {{ coin.low_24h | number:'':'es' }} €</td>
+    </table>
+  </div>
+  
 </div>
-
-<!-- <div>
-  <table>
-    <tr>
-      <th>Date</th>
-      <th>Price *</th>
-      <th>Volume *</th>
-      <th>Market Cap *</th>
-    </tr>
-
-    <tr *ngFor="let data of dates; index as i">
-      <td>{{ dates[dates.length-i] | date:'YYYY/MM/dd' }}</td>
-      <td>{{ prices[prices.length-i] }}</td>
-      <td>{{ volumes[volumes.length-i] }}</td>
-      <td>{{ marketcaps[marketcaps.length-i] }}</td>
-  </table>
-
-</div> -->
-
-<span class="description">* Data in %</span>
+<div class="description">
+  <span>* Data in %</span> <br>
+  <span>Updated on {{ updateTime | date: 'yyyy-MM-dd' }} at {{ updateTime | date: 'H:MM:SS z' }}</span>
+</div>

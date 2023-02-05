@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 export class CoinsAPIService {
   firstCoinUrl = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=1&page=1&sparkline=false';
   firstCoinID: any;
-  coinAmount: number = 250;
   clickedCoin: any = '';
   showClickedCoinInfo: boolean = false;
   tableData: any = '';
@@ -35,21 +34,8 @@ export class CoinsAPIService {
   }
 
 
-  // getGlobal(name: any) {
-  //   // console.log('Name of coins: ', name);
-  //   let tableCoins = [];
-  //   for (let index = 0; index < name.length; index++) {
-  //     this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${name[index]}`).subscribe(data => {
-  //       tableCoins.push(data);
-  //     });
-  //   }
-  //   console.log('Data: ', );
-
-  // }
-
-
-  getAPIdata(): Observable<any> {
-    return this.httpClient.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=${this.coinAmount}&page=1&sparkline=false`);
+  getAPIdata(amount: number): Observable<any> {
+    return this.httpClient.get(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&order=market_cap_desc&per_page=${amount}&page=1&sparkline=false`);
   }
 
 
