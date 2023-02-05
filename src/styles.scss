@@ -3,12 +3,17 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background: linear-gradient(to right, #e96443, #904e95);
   cursor: context-menu;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 :root {
   --orange: #ff6a00;
   --purple: #c44bce;
   --bg: #1b2b3b;
+  --bordeaux: #ff63844d;
 }
 
 *::-webkit-scrollbar {
@@ -46,5 +51,13 @@ a {
   background-color: #ff4343 !important;
   color: white !important;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -5,25 +5,25 @@
 <div class="table-container">
     <div class="data-btn-box">
         <div>
-            <div *ngFor="let button of periodBtn">
-                <button mat-raised-button (click)="service.getChartDataByPeriod(button.data); getPeriod(button.period)">
+            <div *ngFor="let button of periodBtn; let i = index" [class.activeBtn]="i === activeBtnIndex" [class.inactiveBtn]="showDatePicker">
+                <button mat-raised-button (click)="service.getChartDataByPeriod(button.data); getPeriod(button.period); activeBtnIndex = i">
                     {{ button.name }}
                 </button>
             </div>
 
-            <div>
+            <div [class.activeBtn]="showDatePicker">
                 <button mat-raised-button
-                    (click)="showDatePicker = !showDatePicker; chart.destroy(); trackDate.reset()">
+                    (click)="showDatePicker = !showDatePicker; chart.destroy(); trackDate.reset(); activeBtnIndex == undefined">
                     <mat-icon>calendar_month</mat-icon>
                 </button>
             </div>
 
             <div>
-                <button mat-raised-button class="screenshot-btn" (click)="capture()" title="Take Chart-Screenshot">
+                <button mat-raised-button class="screenshot-btn" (click)="capture()" title="Take Chart-Screenshot" [disabled]="showDatePicker">
                     <mat-icon>photo_camera</mat-icon>
                 </button>
 
-                <button mat-raised-button class="full-btn" (click)="fullscreenMode = true"
+                <button mat-raised-button class="full-btn" (click)="fullscreenMode = true" [disabled]="showDatePicker"
                     title="Open Chart-Fullscreen">
                     <mat-icon>fullscreen</mat-icon>
                 </button>

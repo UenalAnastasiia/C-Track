@@ -25,6 +25,7 @@ export class ChartComponent implements OnInit, OnChanges {
   imgBase64 = '';
   todayDate = new Date();
   currentPeriod = 1;
+  activeBtnIndex: number;
   fullscreenMode: boolean = false;
   showDatePicker: boolean = false;
   progressSpinner: boolean = false;
@@ -46,7 +47,7 @@ export class ChartComponent implements OnInit, OnChanges {
 
 
   ngOnInit(): void {
-    Chart.register(...registerables);
+    Chart.register(...registerables); 
   }
 
 

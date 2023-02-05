@@ -70,7 +70,7 @@
     }
 
     button {
-        background: #ff63844d;
+        background: var(--bordeaux);
         margin: 12px;
         min-width: 32px;
 
@@ -103,14 +103,14 @@
     position: absolute;
     top: -125px;
     left: -400px;
-    height: 100vh;
-    width: calc(100vw - 8px);
+    height: 90vh;
+    width: 100vw;
     background: var(--bg);
     z-index: 2;
-    padding-top: 12vh;
+    padding-top: 10vh;
 
     button {
-        background: #ff63844d;
+        background: var(--bordeaux);
         margin: 12px;
         min-width: 32px;
         position: absolute;
@@ -158,5 +158,17 @@
     ::ng-deep .mat-progress-spinner circle,
     .mat-spinner circle {
         stroke: var(--orange);
+    }
+}
+
+.activeBtn {
+    button {
+        background: var(--orange);
+    }
+}
+
+.inactiveBtn {
+    button {
+        background: var(--bordeaux);
     }
 }
