@@ -22,6 +22,10 @@
                 <button mat-raised-button class="full-btn" (click)="fullscreenMode = true">
                     <mat-icon>fullscreen</mat-icon>
                 </button>
+
+                <button mat-raised-button (click)="capture()">
+                    <mat-icon>camera</mat-icon>
+                </button>
             </div>
         </div>
 
@@ -47,7 +51,7 @@
         </div>
     </div>
 
-    <div class="chart-container" [class.fullscreen]="fullscreenMode">
+    <div class="chart-container" [class.fullscreen]="fullscreenMode" #screen>
         <canvas id="MyChart">{{ chart }}</canvas>
 
         <button *ngIf="fullscreenMode" class="exit-button" mat-raised-button (click)="fullscreenMode = false">

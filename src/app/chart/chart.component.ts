@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Chart, registerables } from 'chart.js';
 import { CoinInfoComponent } from '../coin-info/coin-info.component';
 import { CoinsAPIService } from '../services/coins-api.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import { NgxCaptureService } from 'ngx-capture';
 
 
 @Component({
@@ -67,8 +68,12 @@ export class ChartComponent implements OnInit, OnChanges {
     }
   ];
 
+  imgBase64 = '';
 
-  constructor(public service: CoinsAPIService, public dialog: MatDialog, public snackBar: MatSnackBar) { }
+  @ViewChild('screen', { static: true }) screen: any;
+
+
+  constructor(public service: CoinsAPIService, public dialog: MatDialog, public snackBar: MatSnackBar, private captureService: NgxCaptureService) { }
 
 
   ngOnInit(): void {
@@ -235,5 +240,45 @@ export class ChartComponent implements OnInit, OnChanges {
 
   openInfo() {
     this.dialog.open(CoinInfoComponent);
+  }
+
+
+  /**
+   * SCREENSHOT Functions
+   */
+  capture() {
+    this.captureService
+      .getImage(this.screen.nativeElement, true)
+      .subscribe((img) => {
+        this.imgBase64 = img;
+        this.downloadJson();
+      });
+  }
+
+
+  downloadJson() {
+    var element = document.createElement('a');
+    element.setAttribute('href', this.imgBase64);
+    element.setAttribute('download', 'test.png');
+    element.style.display = 'none';
+    document.body.appendChild(element);
+    element.click();
+    document.body.removeChild(element);
+  }
+
+
+  DataURIToBlob(dataURI: string) {
+    const splitDataURI = dataURI.split(',');
+    const byteString =
+      splitDataURI[0].indexOf('base64') >= 0
+        ? atob(splitDataURI[1])
+        : decodeURI(splitDataURI[1]);
+    const mimeString = splitDataURI[0].split(':')[1].split(';')[0];
+
+    const ia = new Uint8Array(byteString.length);
+    for (let i = 0; i < byteString.length; i++)
+      ia[i] = byteString.charCodeAt(i);
+
+    return new Blob([ia], { type: mimeString });
   }
 }
