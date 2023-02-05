@@ -6,8 +6,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ErrorService {
 
-    checkOnline()
-    {
+    checkOnline() {
         if (!navigator.onLine) {
             return 'No Internet Connection';
         }
@@ -29,6 +28,6 @@ export class ErrorService {
     }
 
     getServerStack(error: HttpErrorResponse): string {
-      return error.error.StackTrace;
-  }
-  }
+        return error.error.StackTrace;
+    }
+}

@@ -113,7 +113,7 @@ export class ChartComponent implements OnInit, OnChanges {
         datasets:
           [
             {
-              label: "Overview of prices in €",
+              label: "Prices in €",
               data: prices,
               fill: true,
               backgroundColor: '#ff63844d'
@@ -139,7 +139,6 @@ export class ChartComponent implements OnInit, OnChanges {
 
   getPeriod(period: number) {
     this.period = [];
-
     if (period == 1) {
       this.choosenData = false;
       this.pushMinutesToPeriod();
@@ -214,10 +213,12 @@ export class ChartComponent implements OnInit, OnChanges {
     }
 
     this.service.getDataByChoosenDate(choosenDate);
-
     this.progressBar = true;
+
     setTimeout(() => {
       this.progressBar = false;
+      this.fullscreenMode = true;
+      this.trackDate.reset();
     }, 5000);
   }
 

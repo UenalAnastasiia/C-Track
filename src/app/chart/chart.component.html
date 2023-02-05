@@ -13,7 +13,7 @@
             </div>
 
             <div>
-                <button mat-raised-button (click)="showDatePicker = !showDatePicker">
+                <button mat-raised-button (click)="showDatePicker = !showDatePicker; chart.destroy(); trackDate.reset()">
                     <mat-icon>calendar_month</mat-icon>
                 </button>
             </div>
