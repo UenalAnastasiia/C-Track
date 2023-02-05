@@ -6,18 +6,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ErrorService {
 
-    checkOnline() {
-        if (!navigator.onLine) {
-            return 'No Internet Connection';
-        }
-    }
-
-    getClientMessage(error: Error): string {
-        return error.message ? error.message : error.toString();
-    }
-
-    getClientStack(error: Error): string {
-        return error.stack;
+    getClientMessage(error: Error) {
+        return error;
     }
 
     getServerMessage(error: HttpErrorResponse): string {
@@ -25,9 +15,5 @@ export class ErrorService {
         if (!!msg)
             return msg + " : " + error.error.ExceptionMessage;
         return "API-Limit was exceeded, please reload the page or try again later.";
-    }
-
-    getServerStack(error: HttpErrorResponse): string {
-        return error.error.StackTrace;
     }
 }

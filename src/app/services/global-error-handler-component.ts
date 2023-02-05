@@ -13,18 +13,17 @@ export class GlobalErrorHandler implements ErrorHandler {
 
     handleError(error: Error | HttpErrorResponse) {
         const errorService = this.injector.get(ErrorService);
-        let message;
-        let stackTrace = errorService.getClientStack(error);
+        let message: any;
 
-        if (error instanceof HttpErrorResponse) // Server Error
+        if (error instanceof HttpErrorResponse) // Server Error 
+        {
             message = errorService.getServerMessage(error);
-        else // Client Error
-            message = errorService.getClientMessage(error);
-
-        this.snackBar.open(message, 'X', { 
-            panelClass: ['error', 'snackbar-error'],
-            verticalPosition: this.verticalPosition,
-            horizontalPosition: this.horizontalPosition 
-        });
+            this.snackBar.open(message, 'X', {
+                panelClass: ['error', 'snackbar-error'],
+                verticalPosition: this.verticalPosition,
+                horizontalPosition: this.horizontalPosition
+            });
+        } else // Client Error
+            console.error(errorService.getClientMessage(error));
     }
 }
