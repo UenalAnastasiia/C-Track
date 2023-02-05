@@ -7,7 +7,8 @@
     <mat-card *ngFor="let coin of coins | filter : searchText; let i = index"
         (click)="service.getChoosenCoinData(coin.id); 
         updateClickedBtn();
-        activeElmIndex = i"
+        activeElmIndex = i; 
+        tabService.activeBtnIndex = 0"
         [class.activeElm]="i === activeElmIndex">
 
         <img src="{{ coin.image }}" alt="{{ coin.symbol }}">

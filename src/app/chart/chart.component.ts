@@ -6,6 +6,7 @@ import { CoinsAPIService } from '../services/coins-api.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { NgxCaptureService } from 'ngx-capture';
+import { TabButtonsService } from '../services/tab-buttons.service';
 
 
 @Component({
@@ -25,7 +26,6 @@ export class ChartComponent implements OnInit, OnChanges {
   imgBase64 = '';
   todayDate = new Date();
   currentPeriod = 1;
-  activeBtnIndex: number;
   fullscreenMode: boolean = false;
   showDatePicker: boolean = false;
   progressSpinner: boolean = false;
@@ -43,7 +43,7 @@ export class ChartComponent implements OnInit, OnChanges {
   ];
 
 
-  constructor(public service: CoinsAPIService, public dialog: MatDialog, public snackBar: MatSnackBar, private captureService: NgxCaptureService) { }
+  constructor(public service: CoinsAPIService, public dialog: MatDialog, public snackBar: MatSnackBar, private captureService: NgxCaptureService, public tabService: TabButtonsService) { }
 
 
   ngOnInit(): void {
