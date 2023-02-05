@@ -16,61 +16,30 @@ import { NgxCaptureService } from 'ngx-capture';
 export class ChartComponent implements OnInit, OnChanges {
   @Input() dataID: any;
   @Input() chartID: any;
-  chartData: any = [];
-  coin: any = '';
+  @ViewChild('screen', { static: true }) screen: any;
   public chart: any;
+  chartData: any = [];
   prices = [];
   period = [];
+  coin: any = '';
+  imgBase64 = '';
+  todayDate = new Date();
   currentPeriod = 1;
   fullscreenMode: boolean = false;
   showDatePicker: boolean = false;
-  maxDate = new Date();
+  progressSpinner: boolean = false;
+  choosenData: boolean = false;
+  verticalPosition: MatSnackBarVerticalPosition = 'top';
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+
   trackDate = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
   });
-  progressBar: boolean = false;
-  choosenData: boolean = false;
 
-  verticalPosition: MatSnackBarVerticalPosition = 'top';
-  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-
-  periodBtn = [
-    {
-      data: 1,
-      name: '1 D',
-      period: 1
-    },
-    {
-      data: 6,
-      name: '7 D',
-      period: 7
-    },
-    {
-      data: 30,
-      name: '30 D',
-      period: 31
-    },
-    {
-      data: 93,
-      name: '3 M',
-      period: 94
-    },
-    {
-      data: 182,
-      name: '6 M',
-      period: 183
-    },
-    {
-      data: 364,
-      name: '1 Y',
-      period: 365
-    }
+  periodBtn = [{data: 1, name: '1 D', period: 1}, {data: 6, name: '7 D', period: 7}, {data: 30, name: '30 D', period: 31},
+    {data: 93, name: '3 M', period: 94}, {data: 182, name: '6 M', period: 183}, {data: 364, name: '1 Y', period: 365}
   ];
-
-  imgBase64 = '';
-
-  @ViewChild('screen', { static: true }) screen: any;
 
 
   constructor(public service: CoinsAPIService, public dialog: MatDialog, public snackBar: MatSnackBar, private captureService: NgxCaptureService) { }
@@ -143,13 +112,13 @@ export class ChartComponent implements OnInit, OnChanges {
 
 
   getPeriod(period: number) {
+    this.showDatePicker = false;
     this.period = [];
     if (period == 1) {
       this.choosenData = false;
       this.pushMinutesToPeriod();
     } else if (period == 0) {
       this.choosenData = true;
-      this.showDatePicker = false;
       this.pushChoosenDaysToPeriod();
     } else {
       this.choosenData = false;
@@ -211,6 +180,11 @@ export class ChartComponent implements OnInit, OnChanges {
       choosenDate.push(form);
     }
 
+    this.pushChoosenData(choosenDate, time);
+  }
+
+
+  pushChoosenData(choosenDate: any, time: any) {
     this.period = [];
     for (let index = 0; index < choosenDate.length; index++) {
       let dateForm = time[index].getFullYear() + '/' + (time[index].getMonth() + 1) + '/' + time[index].getDate();
@@ -218,10 +192,9 @@ export class ChartComponent implements OnInit, OnChanges {
     }
 
     this.service.getDataByChoosenDate(choosenDate);
-    this.progressBar = true;
-
+    this.progressSpinner = true;
     setTimeout(() => {
-      this.progressBar = false;
+      this.progressSpinner = false;
       this.fullscreenMode = true;
       this.trackDate.reset();
     }, 5000);
@@ -240,7 +213,7 @@ export class ChartComponent implements OnInit, OnChanges {
 
   openInfo() {
     this.dialog.open(CoinInfoComponent);
-  }
+  } 
 
 
   /**
@@ -257,28 +230,12 @@ export class ChartComponent implements OnInit, OnChanges {
 
 
   downloadJson() {
-    var element = document.createElement('a');
+    let element = document.createElement('a');
     element.setAttribute('href', this.imgBase64);
-    element.setAttribute('download', 'test.png');
+    element.setAttribute('download', `${this.coin.name}_${this.todayDate}.png`);
     element.style.display = 'none';
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
-  }
-
-
-  DataURIToBlob(dataURI: string) {
-    const splitDataURI = dataURI.split(',');
-    const byteString =
-      splitDataURI[0].indexOf('base64') >= 0
-        ? atob(splitDataURI[1])
-        : decodeURI(splitDataURI[1]);
-    const mimeString = splitDataURI[0].split(':')[1].split(';')[0];
-
-    const ia = new Uint8Array(byteString.length);
-    for (let i = 0; i < byteString.length; i++)
-      ia[i] = byteString.charCodeAt(i);
-
-    return new Blob([ia], { type: mimeString });
   }
 }

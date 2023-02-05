@@ -1,30 +1,31 @@
-<div class="progress-spinner" *ngIf="progressBar">
+<div class="progress-spinner" *ngIf="progressSpinner">
     <mat-spinner></mat-spinner>
-  </div>
+</div>
 
 <div class="table-container">
     <div class="data-btn-box">
         <div>
             <div *ngFor="let button of periodBtn">
-                <button mat-raised-button
-                    (click)="service.getChartDataByPeriod(button.data); getPeriod(button.period); !showDatePicker">
+                <button mat-raised-button (click)="service.getChartDataByPeriod(button.data); getPeriod(button.period)">
                     {{ button.name }}
                 </button>
             </div>
 
             <div>
-                <button mat-raised-button (click)="showDatePicker = !showDatePicker; chart.destroy(); trackDate.reset()">
+                <button mat-raised-button
+                    (click)="showDatePicker = !showDatePicker; chart.destroy(); trackDate.reset()">
                     <mat-icon>calendar_month</mat-icon>
                 </button>
             </div>
 
             <div>
-                <button mat-raised-button class="full-btn" (click)="fullscreenMode = true">
-                    <mat-icon>fullscreen</mat-icon>
+                <button mat-raised-button class="screenshot-btn" (click)="capture()" title="Take Chart-Screenshot">
+                    <mat-icon>photo_camera</mat-icon>
                 </button>
 
-                <button mat-raised-button (click)="capture()">
-                    <mat-icon>camera</mat-icon>
+                <button mat-raised-button class="full-btn" (click)="fullscreenMode = true"
+                    title="Open Chart-Fullscreen">
+                    <mat-icon>fullscreen</mat-icon>
                 </button>
             </div>
         </div>
@@ -32,7 +33,7 @@
         <div *ngIf="showDatePicker" class="calendar-box">
             <mat-form-field appearance="fill">
                 <mat-label>Enter a tracking date</mat-label>
-                <mat-date-range-input [formGroup]="trackDate" [rangePicker]="picker" [max]="maxDate">
+                <mat-date-range-input [formGroup]="trackDate" [rangePicker]="picker" [max]="todayDate">
                     <input matStartDate formControlName="start" placeholder="Start date">
                     <input matEndDate formControlName="end" placeholder="End date">
                 </mat-date-range-input>
