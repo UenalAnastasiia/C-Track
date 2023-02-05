@@ -45,9 +45,9 @@ table {
   th {
     text-align: center;
     font-size: 14px;
-    color: var(--orange);
+    background: var(--orange);
     min-width: 6vw;
-    border: 1px solid #864b00;
+    border: 1px solid white;
     padding-top: 8px;
     padding-bottom: 8px;
 
@@ -68,12 +68,23 @@ table {
       min-width: 3vw;
     }
   }
+
+  tr {
+    &:nth-of-type(even) {
+      background: #4b230c;
+    }
+
+    &:nth-of-type(odd) {
+      background: #503452;
+    }
+  }
 }
 
 .name-td {
   cursor: pointer;
 
   &:hover {
-    background: #ffffff21;
+      color: var(--orange);
+      background: #ffffff46;
   }
 }

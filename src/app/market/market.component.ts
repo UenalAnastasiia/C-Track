@@ -54,9 +54,7 @@ export class MarketComponent implements OnInit {
   renderTable() {
     this.service.getAPIdata(10)
     .subscribe(result => {
-      this.coinTable = result;
-      console.log(this.coinTable);
-      
+      this.coinTable = result;      
     });
   }
 
