@@ -117,7 +117,6 @@ export class ChartComponent implements OnInit, OnChanges {
 
 
   getPeriod(period: number) {
-    this.showDatePicker = false;
     this.period = [];
 
     if (period == 1) {
@@ -202,7 +201,6 @@ export class ChartComponent implements OnInit, OnChanges {
     setTimeout(() => {
       this.progressSpinner = false;
       this.fullscreenMode = true;
-      this.trackDate.reset();
     }, 5000);
   }
 

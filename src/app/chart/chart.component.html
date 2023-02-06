@@ -10,7 +10,7 @@
                     [class.inactiveBtn]="showDatePicker">
                     <button mat-raised-button
                         (click)="service.getChartDataByPeriod(button.data); getPeriod(button.period); tabService.activeBtnIndex = i; 
-                        tabService.activeRangeIndex = 0">
+                        tabService.activeRangeIndex = 0; !showDatePicker">
                         {{ button.name }}
                     </button>
                 </div>
