@@ -18,6 +18,7 @@ export class ChartComponent implements OnInit, OnChanges {
   @Input() dataID: any;
   @Input() chartID: any;
   @ViewChild('screen', { static: true }) screen: any;
+  @ViewChild('MyChart') canvas: any;
   public chart: any;
   chartData: any = [];
   prices = [];
@@ -38,8 +39,8 @@ export class ChartComponent implements OnInit, OnChanges {
     end: new FormControl<Date | null>(null),
   });
 
-  periodBtn = [{data: 1, name: '1 D', period: 1}, {data: 6, name: '7 D', period: 7}, {data: 30, name: '30 D', period: 31},
-    {data: 93, name: '3 M', period: 94}, {data: 182, name: '6 M', period: 183}, {data: 364, name: '1 Y', period: 365}
+  periodBtn = [{ data: 1, name: '1 D', period: 1 }, { data: 6, name: '7 D', period: 7 }, { data: 30, name: '30 D', period: 31 },
+  { data: 93, name: '3 M', period: 94 }, { data: 182, name: '6 M', period: 183 }, { data: 364, name: '1 Y', period: 365 }
   ];
 
 
@@ -47,7 +48,7 @@ export class ChartComponent implements OnInit, OnChanges {
 
 
   ngOnInit(): void {
-    Chart.register(...registerables); 
+    Chart.register(...registerables);
   }
 
 
@@ -214,7 +215,7 @@ export class ChartComponent implements OnInit, OnChanges {
 
   openInfo() {
     this.dialog.open(CoinInfoComponent);
-  } 
+  }
 
 
   /**

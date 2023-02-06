@@ -8,6 +8,7 @@ export class TabButtonsService {
   tableBtnInactive: boolean = true;
   chartBtnInactive: boolean = true;
   activeBtnIndex: number = 0;
+  activeElmIndex: number;
 
   constructor() { }
 }

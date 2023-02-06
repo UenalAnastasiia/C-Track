@@ -12,7 +12,7 @@ import es from '@angular/common/locales/es';
 export class CoinsReviewComponent implements OnInit {
   public coins: any;
   searchText = '';
-  activeElmIndex: number;
+  // activeElmIndex: number;
 
   constructor(public service: CoinsAPIService, public tabService: TabButtonsService) { }
 

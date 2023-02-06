@@ -95,10 +95,6 @@
     right: 0;
 }
 
-#MyChart {
-    z-index: 1;
-}
-
 .fullscreen {
     position: absolute;
     top: -125px;
@@ -106,7 +102,7 @@
     height: 90vh;
     width: 100vw;
     background: var(--bg);
-    z-index: 2;
+    z-index: 1;
     padding-top: 10vh;
 
     button {
