@@ -6,7 +6,7 @@
 
 .info {
     position: absolute;
-    bottom: 12px;
+    bottom: -6px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -97,7 +97,7 @@
 
 .fullscreen {
     position: absolute;
-    top: -125px;
+    top: -105px;
     left: -400px;
     height: 90vh;
     width: 100vw;
@@ -122,15 +122,19 @@
 .full-btn {
     position: absolute;
     right: 0;
+    top: 0;
+
 }
 
 .screenshot-btn {
     position: absolute;
     right: 74px;
+    top: 0;
 }
 
 .calendar-box {
     position: relative;
+    margin-left: 12px;
 
     button {
         position: absolute;
@@ -167,4 +171,8 @@
     button {
         background: var(--bordeaux);
     }
+}
+
+.chart-container {
+    margin-top: -20px;
 }

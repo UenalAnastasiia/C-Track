@@ -47,6 +47,15 @@ a {
   display: none !important;
 }
 
+.d-flex-direction {
+  display: flex;
+  flex-direction: column;
+}
+
+.d-flex {
+  display: flex;
+}
+
 .snackbar-box {
   background-color: #ff4343 !important;
   color: white !important;

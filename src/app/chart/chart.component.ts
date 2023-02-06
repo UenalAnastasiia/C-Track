@@ -33,6 +33,7 @@ export class ChartComponent implements OnInit, OnChanges {
   choosenData: boolean = false;
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  chartRange: any = 'prices';
 
   trackDate = new FormGroup({
     start: new FormControl<Date | null>(null),
@@ -42,6 +43,8 @@ export class ChartComponent implements OnInit, OnChanges {
   periodBtn = [{ data: 1, name: '1 D', period: 1 }, { data: 6, name: '7 D', period: 7 }, { data: 30, name: '30 D', period: 31 },
   { data: 93, name: '3 M', period: 94 }, { data: 182, name: '6 M', period: 183 }, { data: 364, name: '1 Y', period: 365 }
   ];
+
+  rangeBtn = [{ id: 'prices', name: 'Prices' }, { id: 'market_caps', name: 'Market Caps' }, { id: 'total_volumes', name: 'Total Volumes' }];
 
 
   constructor(public service: CoinsAPIService, public dialog: MatDialog, public snackBar: MatSnackBar, private captureService: NgxCaptureService, public tabService: TabButtonsService) { }
@@ -56,20 +59,20 @@ export class ChartComponent implements OnInit, OnChanges {
     this.chartData = [];
     this.coin = this.dataID;
     this.chartData = this.chartID;
-    this.loadData();
+    this.loadData(this.chartRange);
     this.getPeriod(this.currentPeriod);
   }
 
 
-  loadData() {
+  loadData(range: any) {
     if (this.choosenData) {
       this.prices = [];
       this.prices = this.chartData;
     } else {
-      let number = this.chartData.prices.length;
+      let number = this.chartData[range].length;
       this.prices = [];
       for (let index = 0; index < number; index++) {
-        this.prices.push(this.chartData.prices[index][1]);
+        this.prices.push(this.chartData[range][index][1]);
       }
     }
 
@@ -89,7 +92,7 @@ export class ChartComponent implements OnInit, OnChanges {
         datasets:
           [
             {
-              label: "Prices in €",
+              label: "View in €",
               data: prices,
               fill: true,
               backgroundColor: '#ff63844d'
@@ -116,6 +119,7 @@ export class ChartComponent implements OnInit, OnChanges {
   getPeriod(period: number) {
     this.showDatePicker = false;
     this.period = [];
+
     if (period == 1) {
       this.choosenData = false;
       this.pushMinutesToPeriod();

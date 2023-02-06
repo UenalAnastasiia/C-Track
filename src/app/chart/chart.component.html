@@ -4,22 +4,40 @@
 
 <div class="table-container">
     <div class="data-btn-box">
-        <div>
-            <div *ngFor="let button of periodBtn; let i = index" [class.activeBtn]="i === tabService.activeBtnIndex" [class.inactiveBtn]="showDatePicker">
-                <button mat-raised-button (click)="service.getChartDataByPeriod(button.data); getPeriod(button.period); tabService.activeBtnIndex = i">
-                    {{ button.name }}
-                </button>
+        <div class="d-flex-direction">
+            <div>
+                <div *ngFor="let button of periodBtn; let i = index" [class.activeBtn]="i === tabService.activeBtnIndex"
+                    [class.inactiveBtn]="showDatePicker">
+                    <button mat-raised-button
+                        (click)="service.getChartDataByPeriod(button.data); getPeriod(button.period); tabService.activeBtnIndex = i; 
+                        tabService.activeRangeIndex = 0">
+                        {{ button.name }}
+                    </button>
+                </div>
+
+                <div [class.activeBtn]="showDatePicker">
+                    <button mat-raised-button
+                        (click)="showDatePicker = !showDatePicker; chart.destroy(); trackDate.reset()">
+                        <mat-icon>calendar_month</mat-icon>
+                    </button>
+                </div>
             </div>
 
-            <div [class.activeBtn]="showDatePicker">
-                <button mat-raised-button
-                    (click)="showDatePicker = !showDatePicker; chart.destroy(); trackDate.reset()">
-                    <mat-icon>calendar_month</mat-icon>
-                </button>
+            <div class="d-flex">
+                <div *ngFor="let button of rangeBtn; let i = index"
+                    [class.activeBtn]="i === tabService.activeRangeIndex">
+                    <button mat-raised-button (click)="loadData(button.id); 
+                    getPeriod(periodBtn[tabService.activeBtnIndex].period); 
+                    tabService.activeRangeIndex = i"
+                    [class.d-none]="showDatePicker">
+                        {{ button.name }}
+                    </button>
+                </div>
             </div>
 
             <div>
-                <button mat-raised-button class="screenshot-btn" (click)="capture()" title="Take Chart-Screenshot" [disabled]="showDatePicker">
+                <button mat-raised-button class="screenshot-btn" (click)="capture()" title="Take Chart-Screenshot"
+                    [disabled]="showDatePicker">
                     <mat-icon>photo_camera</mat-icon>
                 </button>
 
