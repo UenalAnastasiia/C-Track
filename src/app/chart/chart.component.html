@@ -80,6 +80,13 @@
 
     <div class="info">
         <div class="info-box">
+            <button mat-button (click)="openExchange()">
+                <mat-icon class="orange-icon">currency_exchange</mat-icon>
+                <span>Exchange</span>
+            </button>
+        </div>
+
+        <div class="info-box">
             <mat-icon class="orange-icon">home</mat-icon>
             <a href="{{ service.clickedCoin.links.homepage[0] }}" target="_blank">
                 {{ coin.links.homepage[0] }}</a>

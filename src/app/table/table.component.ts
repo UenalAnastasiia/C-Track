@@ -13,8 +13,8 @@ export class TableComponent implements OnInit, OnChanges {
   volumes: any = [];
   marketcaps: any = [];
   tableData: any = [];
-
   dataSource: any[] = [];
+  updateTime: any;
 
   constructor(public service: CoinsAPIService) {
   }
@@ -28,7 +28,8 @@ export class TableComponent implements OnInit, OnChanges {
   ngOnChanges() {
     this.tableData = this.tableID;
     this.dataSource = [];
-    this.pushToDataSource(this.tableData)
+    this.pushToDataSource(this.tableData);
+    this.updateTime = this.service.clickedCoin.last_updated;
   }
 
 

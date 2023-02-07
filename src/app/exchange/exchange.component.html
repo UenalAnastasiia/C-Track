@@ -1,0 +1,15 @@
+<div class="exchange-box">
+    <button mat-icon-button (click)="dialogRef.close()">
+        <mat-icon>close</mat-icon>
+    </button>
+    
+    <div class="exchange-header">
+        <img src="{{ service.clickedCoin.image.small }}" alt="">
+        <h2>{{ service.clickedCoin.name }}</h2>
+    </div>
+
+    <span>
+        {{ service.clickedCoin.market_data.current_price.eur }} €
+    </span> <br> <br>
+    <span>{{ service.clickedCoin.market_data.current_price.eth }} ETH</span>
+</div>

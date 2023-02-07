@@ -26,6 +26,7 @@ import { GlobalErrorHandler } from './services/global-error-handler-component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ExchangeComponent } from './exchange/exchange.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     TableComponent,
     ChartComponent,
     CoinInfoComponent,
-    MarketComponent
+    MarketComponent,
+    ExchangeComponent
   ],
   imports: [
     BrowserModule,

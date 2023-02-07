@@ -7,6 +7,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { NgxCaptureService } from 'ngx-capture';
 import { TabButtonsService } from '../services/tab-buttons.service';
+import { ExchangeComponent } from '../exchange/exchange.component';
 
 
 @Component({
@@ -215,11 +216,6 @@ export class ChartComponent implements OnInit, OnChanges {
   }
 
 
-  openInfo() {
-    this.dialog.open(CoinInfoComponent);
-  }
-
-
   /**
    * SCREENSHOT Functions
    */
@@ -241,5 +237,15 @@ export class ChartComponent implements OnInit, OnChanges {
     document.body.appendChild(element);
     element.click();
     document.body.removeChild(element);
+  }
+
+
+  openInfo() {
+    this.dialog.open(CoinInfoComponent);
+  }
+
+
+  openExchange() {
+    this.dialog.open(ExchangeComponent);
   }
 }
