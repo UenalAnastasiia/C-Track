@@ -23,10 +23,10 @@ table {
         min-width: 5vw;
         border: 1px solid white collapse;
 
-        &:first-child {
-            padding-left: calc(3vw - 32px);
-            text-align: center;
-        }
+        // &:first-child {
+        //     padding-left: calc(3vw - 32px);
+        //     text-align: center;
+        // }
     }
 
     td {
@@ -39,6 +39,31 @@ table {
         &:first-child {
             padding-left: 3vw;
             text-align: center;
+        }
+    }
+
+    tr {
+        &:first-child {
+            position: fixed;
+            width: 65vw;
+            display: flex;
+            justify-content: start;
+            margin-left: 114px;
+
+            th {
+                width: 12vw;
+                margin-top: -8px;
+                background: var(--bg);
+
+                &:first-child {
+                    padding-left: 20px;
+                    width: calc(12vw - 20px);
+                }
+
+                &:last-child {
+                    padding-left: 58px;
+                }
+            }
         }
     }
 }
