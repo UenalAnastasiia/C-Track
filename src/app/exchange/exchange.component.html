@@ -1,15 +1,39 @@
 <div class="exchange-box">
-    <button mat-icon-button (click)="dialogRef.close()">
+    <button class="close-btn" mat-icon-button (click)="dialogRef.close()">
         <mat-icon>close</mat-icon>
     </button>
-    
+
     <div class="exchange-header">
         <img src="{{ service.clickedCoin.image.small }}" alt="">
-        <h2>{{ service.clickedCoin.name }}</h2>
+        <h2>{{ service.clickedCoin.name }} Exchange</h2>
     </div>
 
-    <span>
-        {{ service.clickedCoin.market_data.current_price.eur }} €
-    </span> <br> <br>
-    <span>{{ service.clickedCoin.market_data.current_price.eth }} ETH</span>
+    <div class="exchange-container">
+        <div class="exchange-field">
+            <span>
+                <input type="text" (keyup)="changed($event)" placeholder="1">
+            </span>
+            <span>{{ service.clickedCoin.symbol.toUpperCase() }}</span>
+        </div>
+
+        <div>
+            <button color="warn" mat-button>
+                <mat-icon>west</mat-icon>
+                <mat-icon>east</mat-icon>
+            </button>
+        </div>
+
+        <div class="exchange-field">
+            <span>
+                {{ firstCoin || this.service.firstExChangeCoin }}
+            </span>
+
+            <span>EUR</span>
+        </div>
+    </div>
+
+
+    <div class="description">
+        <span>Updated on {{ today | date: 'yyyy-MM-dd' }} at {{ this.service.exChangeUpdateDate }}</span>
+    </div>
 </div>

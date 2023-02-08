@@ -141,6 +141,8 @@ export class ChartComponent implements OnInit, OnChanges {
       let dateForm = endTime.getHours() + ':' + ((endTime.getMinutes() < 10 ? '0' : '') + endTime.getMinutes());
       this.period.push(dateForm);
     }
+
+    this.service.exChangeUpdateDate = this.period[this.period.length-1];
   }
 
 
