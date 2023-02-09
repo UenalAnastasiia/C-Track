@@ -10,18 +10,30 @@ import { CoinsAPIService } from '../services/coins-api.service';
 export class ExchangeComponent implements OnInit {
   today = new Date();
   firstCoin: any = '';
-  value: number = 1
+  secondCoin: any = '';
+  value: number = 1;
+  coinHolder: any = '';
+  activeChange: boolean = true;
 
   constructor(public service: CoinsAPIService, public dialogRef: MatDialogRef<ExchangeComponent>) { }
 
   ngOnInit(): void {
-    // console.log(this.service.firstExChangeCoin);
-    // console.log(this.service.exChangeUpdateDate);
+    this.coinHolder = this.service.clickedCoin.market_data.current_price[this.service.clickedCoin.symbol];
   }
 
 
-  changed(value){
+  changedFirstValue(value: any){
     this.firstCoin = value.target.value * this.service.firstExChangeCoin;
   }
 
+
+  changedSecondValue(value: any){
+    this.secondCoin = value.target.value / this.service.firstExChangeCoin;
+  }
+
+
+  changeReverse() {
+    this.firstCoin = 1 * this.service.firstExChangeCoin;
+    this.secondCoin = 1 / this.service.firstExChangeCoin;  
+  }
 }

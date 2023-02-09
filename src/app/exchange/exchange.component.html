@@ -8,27 +8,37 @@
         <h2>{{ service.clickedCoin.name }} Exchange</h2>
     </div>
 
-    <div class="exchange-container">
+    <div class="exchange-container" [class.reverse]="!activeChange">
         <div class="exchange-field">
-            <span>
-                <input type="text" (keyup)="changed($event)" placeholder="1">
+            <span *ngIf="activeChange">
+                <input type="text" (keyup)="changedFirstValue($event)" [value]="value" placeholder="{{ coinHolder }}"> 
             </span>
+
+            <span *ngIf="!activeChange">
+                {{ secondCoin  || 1 / this.service.firstExChangeCoin }}
+            </span>
+
             <span>{{ service.clickedCoin.symbol.toUpperCase() }}</span>
         </div>
 
         <div>
-            <button color="warn" mat-button>
+            <button color="warn" mat-button (click)="changeReverse(); activeChange = !activeChange">
                 <mat-icon>west</mat-icon>
                 <mat-icon>east</mat-icon>
             </button>
         </div>
 
         <div class="exchange-field">
-            <span>
+            <span *ngIf="activeChange">
                 {{ firstCoin || this.service.firstExChangeCoin }}
             </span>
 
+            <span *ngIf="!activeChange">
+                <input type="text" (keyup)="changedSecondValue($event)" [value]="value" placeholder="{{ coinHolder }}"> 
+            </span>
+
             <span>EUR</span>
+
         </div>
     </div>
 
