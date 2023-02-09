@@ -11,30 +11,34 @@
     <div class="exchange-container" [class.reverse]="!activeChange">
         <div class="exchange-field">
             <span *ngIf="activeChange">
-                <input type="text" (keyup)="changedFirstValue($event)" [value]="value" placeholder="{{ coinHolder }}"> 
+                <input type="number" (keyup)="changedFirstValue($event)" [value]="value" placeholder="1">
             </span>
 
             <span *ngIf="!activeChange">
-                {{ secondCoin  || 1 / this.service.firstExChangeCoin }}
+                {{ secondCoin || (1 / this.service.firstExChangeCoin).toFixed(10).toString().replace('.', ',') }}
             </span>
 
             <span>{{ service.clickedCoin.symbol.toUpperCase() }}</span>
         </div>
 
         <div>
-            <button color="warn" mat-button (click)="changeReverse(); activeChange = !activeChange">
+            <button color="warn" mat-button (click)="activeChange = !activeChange">
                 <mat-icon>west</mat-icon>
                 <mat-icon>east</mat-icon>
             </button>
         </div>
 
         <div class="exchange-field">
-            <span *ngIf="activeChange">
-                {{ firstCoin || this.service.firstExChangeCoin }}
+            <span *ngIf="activeChange && this.service.firstExChangeCoin > 100">
+                {{ firstCoin || this.service.firstExChangeCoin.toFixed(2).toString().replace('.', ',') }}
+            </span>
+
+            <span *ngIf="activeChange && this.service.firstExChangeCoin < 100">
+                {{ firstCoin || this.service.firstExChangeCoin.toFixed(10).toString().replace('.', ',') }}
             </span>
 
             <span *ngIf="!activeChange">
-                <input type="text" (keyup)="changedSecondValue($event)" [value]="value" placeholder="{{ coinHolder }}"> 
+                <input type="number" (keyup)="changedSecondValue($event)" [value]="value" placeholder="1">
             </span>
 
             <span>EUR</span>

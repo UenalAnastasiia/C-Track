@@ -73,9 +73,13 @@
         text-align: center;
         color: white;
 
-        &:focus{
+        &:focus {
             outline: none;
         }
+    }
+
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
     }
 }
 
