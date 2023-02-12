@@ -26,6 +26,7 @@ export class ChartComponent implements OnInit, OnChanges {
   period = [];
   coin: any = '';
   imgBase64 = '';
+  chartRange: any = 'prices';
   todayDate = new Date();
   currentPeriod = 1;
   fullscreenMode: boolean = false;
@@ -34,7 +35,6 @@ export class ChartComponent implements OnInit, OnChanges {
   choosenData: boolean = false;
   verticalPosition: MatSnackBarVerticalPosition = 'top';
   horizontalPosition: MatSnackBarHorizontalPosition = 'center';
-  chartRange: any = 'prices';
 
   trackDate = new FormGroup({
     start: new FormControl<Date | null>(null),
@@ -48,7 +48,11 @@ export class ChartComponent implements OnInit, OnChanges {
   rangeBtn = [{ id: 'prices', name: 'Prices' }, { id: 'market_caps', name: 'Market Caps' }, { id: 'total_volumes', name: 'Total Volumes' }];
 
 
-  constructor(public service: CoinsAPIService, public dialog: MatDialog, public snackBar: MatSnackBar, private captureService: NgxCaptureService, public tabService: TabButtonsService) { }
+  constructor(public service: CoinsAPIService, 
+    public dialog: MatDialog, 
+    public snackBar: MatSnackBar, 
+    private captureService: NgxCaptureService, 
+    public tabService: TabButtonsService) { }
 
 
   ngOnInit(): void {
@@ -62,6 +66,15 @@ export class ChartComponent implements OnInit, OnChanges {
     this.chartData = this.chartID;
     this.loadData(this.chartRange);
     this.getPeriod(this.currentPeriod);
+  }
+
+
+  chooseBtn(i: number, data: number, period: number) {
+    this.service.getChartDataByPeriod(data); 
+    this.getPeriod(period); 
+    this.tabService.activeBtnIndex = i; 
+    this.tabService.activeRangeIndex = 0; 
+    this.showDatePicker = false;
   }
 
 

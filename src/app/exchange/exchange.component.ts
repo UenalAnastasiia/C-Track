@@ -29,8 +29,6 @@ export class ExchangeComponent implements OnInit {
 
   chooseCoin(coin) {
     this.choosenCoin = coin;
-    console.log(this.choosenCoin);
-    
   }
 
 

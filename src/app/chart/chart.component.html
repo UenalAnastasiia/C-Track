@@ -9,8 +9,7 @@
                 <div *ngFor="let button of periodBtn; let i = index" [class.activeBtn]="i === tabService.activeBtnIndex"
                     [class.inactiveBtn]="showDatePicker">
                     <button mat-raised-button
-                        (click)="service.getChartDataByPeriod(button.data); getPeriod(button.period); tabService.activeBtnIndex = i; 
-                        tabService.activeRangeIndex = 0; !showDatePicker">
+                    (click)="chooseBtn(i, button.data, button.period)">
                         {{ button.name }}
                     </button>
                 </div>
