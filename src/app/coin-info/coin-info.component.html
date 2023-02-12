@@ -9,5 +9,5 @@
     </div>
 
     <span [innerHTML]="service.clickedCoin.description.en"></span> <br> <br>
-    <span>Genesis date: {{ service.clickedCoin.genesis_date }}</span>
+    <span>Genesis date: {{ service.clickedCoin.genesis_date || '---' }}</span>
 </div>

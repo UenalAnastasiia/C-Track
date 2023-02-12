@@ -1,12 +1,14 @@
 ::ng-deep .mat-dialog-container {
     padding: 0;
     border-radius: 24px;
+    background: var(--bg);
 }
 
 .info-box {
     background: var(--bg);
     padding: 42px;
     position: relative;
+    max-height: 50vh;
 
     button {
         position: absolute;
