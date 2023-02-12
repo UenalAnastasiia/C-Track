@@ -15,7 +15,7 @@
             </span>
 
             <span *ngIf="!activeChange">
-                {{ secondCoin || (1 / this.service.firstExChangeCoin).toFixed(10).toString().replace('.', ',') }}
+                {{ secondCoin || (1 / service.firstExChangeCoin).toFixed(10).toString().replace('.', ',') }}
             </span>
 
             <span>{{ service.clickedCoin.symbol.toUpperCase() }}</span>
@@ -29,12 +29,12 @@
         </div>
 
         <div class="exchange-field">
-            <span *ngIf="activeChange && this.service.firstExChangeCoin > 100">
-                {{ firstCoin || this.service.firstExChangeCoin.toFixed(2).toString().replace('.', ',') }}
-            </span>
+            <!-- <span *ngIf="activeChange && service.firstExChangeCoin > 100">
+                {{ firstCoin || service.firstExChangeCoin.toFixed(2).toString().replace('.', ',') }}
+            </span> -->
 
-            <span *ngIf="activeChange && this.service.firstExChangeCoin < 100">
-                {{ firstCoin || this.service.firstExChangeCoin.toFixed(10).toString().replace('.', ',') }}
+            <span *ngIf="activeChange">
+                {{ firstCoin || service.firstExChangeCoin.toFixed(10).toString().replace('.', ',') }}
             </span>
 
             <span *ngIf="!activeChange">
@@ -42,6 +42,50 @@
             </span>
 
             <span>EUR</span>
+
+        </div>
+    </div>
+
+
+    <!-- Currency List -->
+    <div class="exchange-container" *ngFor="let currency of currencyList; let i = index" [class.reverse]="!currencyActiveChange && i === coinIndex">
+        <div class="exchange-field">
+            <span *ngIf="currencyActiveChange || choosenCoin != currency">
+                <input type="number" (keyup)="currencyChangedFirstValue($event, currency, i)" [value]="value"
+                    placeholder="1">
+            </span>
+
+            <span *ngIf="!currencyActiveChange && choosenCoin == currency && i === coinIndex">
+                {{ currencySecondCoin || (1 / service.clickedCoin.market_data.current_price[currency]).toFixed(10).toString().replace('.', ',') }}
+            </span>
+
+            <span>{{ service.clickedCoin.symbol.toUpperCase() }}</span>
+        </div>
+
+        <div>
+            <button color="warn" mat-button (click)="currencyActiveChange = !currencyActiveChange; coinIndex = i; chooseCoin(currency)">
+                <mat-icon>west</mat-icon>
+                <mat-icon>east</mat-icon>
+            </button>
+        </div>
+
+        <div class="exchange-field">
+            <!-- <span *ngIf="currencyActiveChange && service.clickedCoin.market_data.current_price[currency] > 1000  || choosenCoin != currency">
+                {{ currencyFirstCoin ||
+                service.clickedCoin.market_data.current_price[currency].toFixed(2).toString().replace('.', ',') }}
+            </span> -->
+
+            <span *ngIf="currencyActiveChange || choosenCoin != currency">
+                {{ currencyFirstCoin ||
+                service.clickedCoin.market_data.current_price[currency].toFixed(10).toString().replace('.', ',') }}
+            </span>
+
+            <span *ngIf="!currencyActiveChange && choosenCoin == currency && i === coinIndex">
+                <input type="number" (keyup)="currencyChangedSecondValue($event, currency, i)" [value]="value"
+                    placeholder="1">
+            </span>
+
+            <span>{{ currency.toUpperCase() }}</span>
 
         </div>
     </div>
