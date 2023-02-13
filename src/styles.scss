@@ -56,6 +56,12 @@ a {
   display: flex;
 }
 
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .snackbar-box {
   background-color: #ff4343 !important;
   color: white !important;

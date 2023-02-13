@@ -97,10 +97,12 @@
 
 .fullscreen {
     position: absolute;
-    top: -105px;
-    left: -400px;
-    height: 90vh;
-    width: 100vw;
+    // top: -105px;
+    // left: -400px;
+    top: -14vh;
+    left: -25vw;
+    height: 89vh;
+    width: 98vw;
     background: var(--bg);
     z-index: 1;
     padding-top: 10vh;
