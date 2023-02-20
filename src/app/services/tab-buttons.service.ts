@@ -10,6 +10,10 @@ export class TabButtonsService {
   activeBtnIndex: number = 0;
   activeElmIndex: number;
   activeRangeIndex: number = 0;
+  coinListBtn: boolean = false;
 
-  constructor() { }
+  constructor() {
+    console.log('List Button ', this.coinListBtn);
+    
+   }
 }

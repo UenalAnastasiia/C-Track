@@ -1,10 +1,14 @@
-<div class="coins-review-box">
+<div class="coins-review-box" [class.coinReviewActive]="tabService.coinListBtn">
     <div class="header">
         <mat-icon class="search-icon">search</mat-icon>
         <input matInput class="search-input" autocomplete="off" placeholder="e.g. Btc" [(ngModel)]="searchText">
     </div>
 
-    <mat-card *ngFor="let coin of coins | filter : searchText; let i = index"
+    <button mat-raised-button class="list-btn" color="warn" (click)="tabService.coinListBtn = !tabService.coinListBtn">
+        Coin-List</button>
+
+    <div class="coin-list" [class.coinListActive]="tabService.coinListBtn">
+        <mat-card *ngFor="let coin of coins | filter : searchText; let i = index"
         (click)="service.getChoosenCoinData(coin.id); 
         updateClickedBtn();
         tabService.activeElmIndex = i; 
@@ -40,4 +44,5 @@
             <span>{{ coin.name }}</span>
         </div>
     </mat-card>
+    </div>
 </div>

@@ -9,6 +9,17 @@ mat-card {
     border-top-left-radius: 24px;
     border-top-right-radius: 0;
     background: var(--bg);
+
+    @media (max-width: 1500px) {
+        width: 70vw;
+    }
+
+    @media (max-width: 1200px) {
+        height: auto;
+        margin-bottom: 2vh;
+        margin-left: 17vw;
+        width: 78vw;
+    }
 }
 
 .btn-box {
