@@ -1,13 +1,13 @@
-<div class="coins-review-box" [class.coinReviewActive]="tabService.coinListBtn">
+<!-- <button mat-raised-button class="list-btn" color="warn" (click)="tabService.coinListBtn = !tabService.coinListBtn">
+    Coin-List</button> -->
+
+<div class="coins-review-box coinReviewActive">
     <div class="header">
         <mat-icon class="search-icon">search</mat-icon>
         <input matInput class="search-input" autocomplete="off" placeholder="e.g. Btc" [(ngModel)]="searchText">
     </div>
 
-    <button mat-raised-button class="list-btn" color="warn" (click)="tabService.coinListBtn = !tabService.coinListBtn">
-        Coin-List</button>
-
-    <div class="coin-list" [class.coinListActive]="tabService.coinListBtn">
+    <div class="coinListActive">
         <mat-card *ngFor="let coin of coins | filter : searchText; let i = index"
         (click)="service.getChoosenCoinData(coin.id); 
         updateClickedBtn();
