@@ -6,6 +6,8 @@
     flex-direction: column;
     align-items: center;
     max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 
     @media (max-width: 1200px) {
         left: 12px;
@@ -14,8 +16,8 @@
 }
 
 .coin-list {
-    overflow-y: auto;
-    overflow-x: hidden;
+    // overflow-y: auto;
+    // overflow-x: hidden;
 
     @media (max-width: 1200px) {
         width: 165px;
@@ -51,6 +53,10 @@
     @media (max-width: 1200px) {
         margin-left: 2px;
         width: 125px;
+    }
+
+    @media (max-width: 400px) {
+        width: 90px;
     }
 }
 
@@ -93,6 +99,10 @@ mat-card {
         // width: 125px;
     }
 
+    @media (max-width: 550px) {
+        padding: 14px;
+    }
+
     &:hover {
         filter: brightness(1.3);
 
@@ -115,6 +125,10 @@ mat-card {
         position: absolute;
         top: 8px;
         left: 12px;
+
+        @media (max-width: 550px) {
+            width: 24px;
+        }
     }
 }
 
@@ -126,18 +140,26 @@ mat-card {
     bottom: 6px;
     left: 16px;
 
-    &::after {
-        content: "";
-        position: absolute;
-        top: 48%;
-        right: 0;
-        width: 400px;
-        height: 1px;
-        transform: translate(105%);
-        background: var(--purple);
+    @media (max-width: 550px) {
+        font-size: 14px;
+    }
 
-        @media (max-width: 1200px) {
-            width: 0;
+    span {
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 48%;
+            right: 0;
+            width: 200px;
+            height: 1px;
+            transform: translate(105%);
+            background: var(--purple);
+
+            @media (max-width: 1200px) {
+                width: 0;
+            }
         }
     }
 }
@@ -150,9 +172,17 @@ mat-card {
     right: 8px;
     font-size: 26px;
 
+    @media (max-width: 550px) {
+        font-size: 18px;
+    }
+
     span {
         &:first-child {
             font-size: 18px;
+
+            @media (max-width: 550px) {
+                font-size: 14px;
+            }
         }
     }
 }
@@ -177,6 +207,10 @@ mat-card {
 .price-size {
     font-size: 16px;
     margin-bottom: 4px;
+
+    @media (max-width: 550px) {
+        font-size: 14px;
+    }
 }
 
 .price-icon {
@@ -184,6 +218,10 @@ mat-card {
     height: 24px;
     margin-right: 2px !important;
     color: #e3b93e;
+
+    @media (max-width: 550px) {
+        font-size: 16px;
+    }
 }
 
 .negative-percentage {
@@ -236,5 +274,13 @@ mat-card {
         overflow-x: auto;
         transform: rotateX(180deg);
         margin-top: -12px;
+    }
+
+    @media (max-width: 830px) {
+        width: 95vw;
+    }
+
+    @media (max-width: 400px) {
+        width: 85vw;
     }
 }

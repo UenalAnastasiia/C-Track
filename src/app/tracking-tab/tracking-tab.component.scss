@@ -19,9 +19,17 @@ mat-card {
         margin-bottom: 2vh;
         margin-left: 1vw;
         margin-right: 1vw;
-        max-width: 94vw;
-        width: 94vw;
+        max-width: 90vw;
+        width: 90vw;
         margin-top: 35vh;
+    }
+
+    @media (max-width: 450px) {
+        width: 85vw;
+    }
+
+    @media (height: 600px) {
+        margin-top: 40vh;
     }
 }
 

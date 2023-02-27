@@ -8,6 +8,15 @@
     top: 0;
     left: 24px;
     color: var(--orange);
+
+    @media (max-width: 550px) {
+      font-size: 16px;
+    }
+
+    @media (max-width: 400px) {
+      font-size: 12px;
+      margin-left: -24px;
+    }
   }
 
   @media (max-width: 1200px) {
@@ -24,6 +33,19 @@ canvas {
   @media (max-width: 1300px) {
     margin-left: 8px;
   }
+
+  @media (max-width: 550px) {
+    height: 320px !important;
+    width: 320px !important;
+    transform: rotate(-90deg);
+    margin-left: 0;
+    margin-bottom: 18px;
+  }
+
+  @media (max-width: 400px) {
+    height: 250px !important;
+    width: 250px !important;
+  }
 }
 
 .description {
@@ -36,6 +58,10 @@ canvas {
     &:last-child {
       padding-left: 9px;
     }
+  }
+
+  @media (max-width: 400px) {
+    font-size: 10px;
   }
 }
 
@@ -70,6 +96,10 @@ table {
     padding-top: 8px;
     padding-bottom: 8px;
 
+    @media (max-width: 400px) {
+      font-size: 12px;
+    }
+
     &:first-child {
       min-width: 3vw;
     }
@@ -82,6 +112,10 @@ table {
     text-align: center;
     border: 1px solid #864b00;
     color: #ffdbcc;
+
+    @media (max-width: 400px) {
+      font-size: 12px;
+    }
 
     &:first-child {
       min-width: 3vw;

@@ -5,6 +5,11 @@
     height: 72px;
     width: 240px;
     background: linear-gradient(to left, #904e95, #9595959c, rgb(149 149 149 / 0%));
+
+    @media (max-width: 900px) {
+        height: 55px;
+        width: 165px;
+    }
 }
 
 .logo {
@@ -12,6 +17,11 @@
     top: 12px;
     right: 32px;
     width: max-content;
+
+    @media (max-width: 900px) {
+        right: 4px;
+        top: 2px;
+    }
     
     h1 {
         margin-bottom: 0;
@@ -27,5 +37,9 @@
         color: #ff7714;
         font-size: 12px;
         filter: drop-shadow(1px 0px 0px #ffffff);
+
+        @media (max-width: 900px) {
+            margin-top: -12px;
+        }
     }
 }

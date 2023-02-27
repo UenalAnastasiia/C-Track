@@ -36,10 +36,10 @@ table {
         border-bottom: 1px solid #864b00;
         color: #ffdbcc;
 
-        &:first-child {
-            padding-left: 3vw;
-            text-align: center;
-        }
+        // &:first-child {
+        //     padding-left: 3vw;
+        //     text-align: center;
+        // }
     }
 
     tr {
@@ -60,23 +60,23 @@ table {
                     padding-right: 24px;
                 }
 
-                &:first-child {
-                    padding-left: 2vw;
-                    padding-right: 0;
-                    width: 10vw;
+                // &:first-child {
+                //     padding-left: 2vw;
+                //     padding-right: 0;
+                //     width: 10vw;
 
-                    @media (min-width: 1800px) {
-                        padding-left: 5vw;
-                    }
-                }
+                //     @media (min-width: 1800px) {
+                //         padding-left: 5vw;
+                //     }
+                // }
 
-                &:last-child {
-                    padding-left: 58px;
+                // &:last-child {
+                //     padding-left: 58px;
 
-                    @media (min-width: 1600px) {
-                        padding-left: 0;
-                    }
-                }
+                //     @media (min-width: 1600px) {
+                //         padding-left: 0;
+                //     }
+                // }
             }
         }
     }
