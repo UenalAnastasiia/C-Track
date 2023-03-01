@@ -15,7 +15,7 @@
                 </div>
 
                 <div [class.activeBtn]="showDatePicker">
-                    <button mat-raised-button
+                    <button mat-raised-button class="calendar-btn"
                         (click)="showDatePicker = !showDatePicker; chart.destroy(); trackDate.reset()">
                         <mat-icon>calendar_month</mat-icon>
                     </button>

@@ -22,13 +22,19 @@ mat-card {
         max-width: 90vw;
         width: 90vw;
         margin-top: 35vh;
+        // min-height: 500px;
     }
 
     @media (max-width: 450px) {
         width: 85vw;
+        margin-top: 37vh;
     }
 
     @media (height: 600px) {
+        margin-top: 40vh;
+    }
+
+    @media (max-width: 300px) {
         margin-top: 40vh;
     }
 }
@@ -43,6 +49,15 @@ mat-card {
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
     display: flex;
+    z-index: 1;
+
+    @media (max-width: 650px) {
+        width: 60%;
+    }
+
+    @media (max-width: 350px) {
+        width: 75%;
+    }
 
     button {
         width: 50%;
@@ -60,12 +75,22 @@ mat-card {
             border-top-right-radius: 24px !important;
             border-radius: 0;
         }
+
+        span {
+            @media (max-width: 650px) {
+                font-size: 12px;
+            }
+        }
     }
 
     mat-icon {
         font-size: 20px;
         height: 20px;
         width: 28px;
+
+        @media (max-width: 650px) {
+            font-size: 16px;
+        }
     }
 }
 
