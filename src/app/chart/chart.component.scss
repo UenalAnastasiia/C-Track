@@ -20,6 +20,16 @@
         flex-direction: column;
         align-items: center;
     }
+
+    div {
+        &:first-child {
+            button {
+                @media (max-width: 900px) {
+                    display: none;
+                }
+            }
+        }
+    }
 }
 
 .info-box {

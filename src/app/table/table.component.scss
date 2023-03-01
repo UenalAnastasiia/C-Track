@@ -17,29 +17,59 @@ table {
     position: relative;
 
     th {
-        text-align: start;
+        text-align: center;
         font-size: 18px;
         color: var(--orange);
-        min-width: 5vw;
+        // min-width: 5vw;
         border: 1px solid white collapse;
 
         // &:first-child {
         //     padding-left: calc(3vw - 32px);
         //     text-align: center;
         // }
+
+        @media (max-width: 650px) {
+            font-size: 16px;
+
+            &:last-child {
+                display: none;
+            }
+        }
+
+        @media (max-width: 450px) {
+            font-size: 14px;
+        }
     }
 
     td {
-        min-width: 5vw;
+        // min-width: 5vw;
+        width: 15vw;
         padding-top: 8px;
         padding-bottom: 8px;
         border-bottom: 1px solid #864b00;
         color: #ffdbcc;
+        text-align: center;
+
+        @media (max-width: 650px) {
+            font-size: 14px;
+
+            &:last-child {
+                display: none;
+            }
+        }
+
+        @media (max-width: 450px) {
+            font-size: 12px;
+        }
 
         // &:first-child {
         //     padding-left: 3vw;
         //     text-align: center;
         // }
+
+        @media (max-width: 1200px) {
+            width: 18vw;
+        }
     }
 
     tr {
@@ -48,16 +78,33 @@ table {
             width: 65vw;
             display: flex;
             justify-content: start;
-            margin-left: 114px;
+            // margin-left: 114px;
+
+            @media (max-width: 1200px) {
+                width: 90vw;
+            }
+
+            @media (max-width: 450px) {
+                width: 82vw;
+            }
 
             th {
-                width: 12vw;
+                // width: 12vw;
+                width: 17vw;
                 margin-top: -8px;
                 background: var(--bg);
 
                 @media (min-width: 1600px) {
                     padding-left: 14px;
                     padding-right: 24px;
+                }
+
+                @media (max-width: 1200px) {
+                    width: 22vw;
+                }
+
+                @media (max-width: 650px) {
+                    width: 30vw;
                 }
 
                 // &:first-child {
@@ -87,4 +134,14 @@ table {
     bottom: 8px;
     left: 28px;
     color: var(--orange);
+
+    @media (max-width: 1200px) {
+        bottom: -4px;
+        font-size: 12px;
+    }
+
+    @media (max-width: 500px) {
+        left: 12px;
+        font-size: 8px;
+    }
 }

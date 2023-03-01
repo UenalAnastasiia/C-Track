@@ -9,6 +9,10 @@
     min-width: 50vw;
     min-height: 40vh;
     background: var(--bg);
+
+    @media (max-width: 1200px) {
+        min-width: 72vw;
+    }
 }
 
 .close-btn {
@@ -60,9 +64,17 @@
         width: 12vw;
         padding: 4px;
 
+        @media (max-width: 1200px) {
+            width: 15vw;
+        }
+
         &:first-child {
             border-right: 1px solid black;
         }
+    }
+
+    @media (max-width: 1200px) {
+        width: 32vw;
     }
 
     input {
@@ -72,6 +84,7 @@
         border: none;
         text-align: center;
         color: white;
+        width: inherit;
 
         &:focus {
             outline: none;
@@ -86,6 +99,11 @@
 .exchange-container {
     display: flex;
     margin-bottom: 24px;
+
+    @media (max-width: 1200px) {
+        width: 72vw;
+        justify-content: center;
+    }
 }
 
 .reverse {
