@@ -13,7 +13,6 @@ export class TabButtonsService {
   coinListBtn: boolean = false;
 
   constructor() {
-    console.log('List Button ', this.coinListBtn);
     
    }
 }

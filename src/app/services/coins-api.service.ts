@@ -59,7 +59,7 @@ export class CoinsAPIService {
 
   getChartDataByPeriod(period: number) {
     if (period == 1) {
-      return this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${this.clickedCoin.id}/market_chart?vs_currency=eur&days=1&interval=minute`).subscribe(data => {
+      return this.httpClient.get(`https://api.coingecko.com/api/v3/coins/${this.clickedCoin.id}/market_chart?vs_currency=eur&days=1`).subscribe(data => {
         this.chartData = data;
         this.firstExChangeCoin = this.chartData.prices[this.chartData.prices.length-1][1]; 
       });
